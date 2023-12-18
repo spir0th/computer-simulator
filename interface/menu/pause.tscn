@@ -76,6 +76,7 @@ ok_button_text = "Yes"
 dialog_text = "Do you want to quit?"
 cancel_button_text = "No"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Contents/_/Navigation/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Contents/_/Navigation/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Contents/_/Navigation/Options" to="." method="_on_options_pressed"]

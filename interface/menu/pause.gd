@@ -18,6 +18,12 @@ func _ready():
 	assert(Global.player != null) # Must check if player is in-game
 	hide() # Normally, pause menu should be hidden after being instantiated.
 
+func _on_visibility_changed():
+	if visible:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _on_resume_pressed():
 	get_tree().paused = false
 
