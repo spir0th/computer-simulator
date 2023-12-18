@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfcu2h2v8twym"]
+
+[node name="Lightbulb" type="OmniLight3D"]
+light_size = 0.5
+omni_range = 10.0
+omni_attenuation = 0.3

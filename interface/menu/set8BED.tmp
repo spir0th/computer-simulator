@@ -1,0 +1,357 @@
+[gd_scene load_steps=2 format=3 uid="uid://ia3ytjghlg1l"]
+
+[ext_resource type="Script" path="res://interface/menu/settings.gd" id="1_1et75"]
+
+[node name="Settings" type="Window"]
+process_mode = 3
+title = "Settings"
+initial_position = 4
+size = Vector2i(800, 500)
+transient = true
+exclusive = true
+min_size = Vector2i(300, 300)
+keep_title_visible = true
+script = ExtResource("1_1et75")
+
+[node name="Contents" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_" type="MarginContainer" parent="Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="_" type="VBoxContainer" parent="Contents/_"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Contents/_/_"]
+layout_mode = 2
+
+[node name="Navigation" type="TabBar" parent="Contents/_/_/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+tab_count = 4
+select_with_rmb = true
+tab_0/title = "Audio"
+tab_1/title = "Display"
+tab_2/title = "Input"
+tab_3/title = "Language"
+
+[node name="RestoreDefaults" type="Button" parent="Contents/_/_/Header"]
+layout_mode = 2
+text = "Restore defaults"
+
+[node name="Options" type="Panel" parent="Contents/_/_"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Scroller" type="ScrollContainer" parent="Contents/_/_/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="_" type="MarginContainer" parent="Contents/_/_/Options/Scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Audio" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
+layout_mode = 2
+
+[node name="Output" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="Enable" type="CheckBox" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enable audio"
+flat = true
+
+[node name="Device" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="_" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master volume"
+
+[node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -15.0
+max_value = 0.0
+step = 0.1
+value = -0.5
+tick_count = 10
+
+[node name="Music" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
+visible = false
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music volume"
+
+[node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -15.0
+max_value = 0.0
+step = 0.1
+value = -3.0
+tick_count = 10
+
+[node name="SFX" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX volume"
+
+[node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -15.0
+max_value = 0.0
+step = 0.1
+value = -3.0
+tick_count = 10
+
+[node name="_2" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
+layout_mode = 2
+
+[node name="DeviceSetup" type="Button" parent="Contents/_/_/Options/Scroller/_/Audio/Buttons"]
+layout_mode = 2
+text = "Launch device setup"
+
+[node name="Display" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
+visible = false
+layout_mode = 2
+
+[node name="Graphics" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Graphics"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MemoryUsage" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Graphics"]
+layout_mode = 2
+text = "Memory usage:"
+horizontal_alignment = 2
+
+[node name="_" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Window" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Window"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mode"
+
+[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Window"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+
+[node name="Screen" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 6
+selected = 2
+popup/item_0/text = "4:3"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "800x600"
+popup/item_1/id = 1
+popup/item_2/text = "1024x768"
+popup/item_2/id = 2
+popup/item_3/text = "16:9"
+popup/item_3/id = 0
+popup/item_3/separator = true
+popup/item_4/text = "1280x720"
+popup/item_4/id = 3
+popup/item_5/text = "1920x1080"
+popup/item_5/id = 4
+
+[node name="UserInterface" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/UserInterface"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UI scale"
+
+[node name="Scale" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Display/UserInterface"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 1.0
+
+[node name="_2" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="FrameRate" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/FrameRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Frame rate cap"
+
+[node name="Cap" type="SpinBox" parent="Contents/_/_/Options/Scroller/_/Display/FrameRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 30.0
+max_value = 144.0
+step = 5.0
+value = 60.0
+update_on_text_changed = true
+suffix = "FPS"
+
+[node name="Vsync" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Vsync"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VSync"
+
+[node name="Mode" type="CheckBox" parent="Contents/_/_/Options/Scroller/_/Display/Vsync"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="_3" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Shadow" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shadow Quality"
+
+[node name="Quality" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 5.0
+value = 2.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="_4" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Benchmark" type="Button" parent="Contents/_/_/Options/Scroller/_/Display/Buttons"]
+layout_mode = 2
+text = "Run benchmark test"
+
+[node name="BenchmarkConfirmation" type="ConfirmationDialog" parent="Contents/_/_/Options/Scroller/_/Display"]
+title = "Benchmark Test"
+initial_position = 4
+size = Vector2i(400, 106)
+ok_button_text = "Yes"
+dialog_text = "Do you want to run a benchmark test? All unsaved progress will be lost."
+dialog_autowrap = true
+cancel_button_text = "No"
+
+[node name="Input" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
+visible = false
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Contents/_/_/Options/Scroller/_/Input"]
+layout_mode = 2
+text = "Not implemented yet!"
+horizontal_alignment = 1
+
+[node name="Language" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
+visible = false
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Contents/_/_/Options/Scroller/_/Language"]
+layout_mode = 2
+text = "Not implemented yet!"
+horizontal_alignment = 1
+
+[node name="DefaultsConfirmation" type="ConfirmationDialog" parent="."]
+title = "Restore default settings"
+initial_position = 4
+size = Vector2i(483, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to revert the settings back to default?"
+cancel_button_text = "No"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="window_input" from="." to="." method="_on_window_input"]
+[connection signal="tab_changed" from="Contents/_/_/Header/Navigation" to="." method="_on_navigation_tab_changed"]
+[connection signal="pressed" from="Contents/_/_/Header/RestoreDefaults" to="." method="_on_restore_defaults_pressed"]
+[connection signal="toggled" from="Contents/_/_/Options/Scroller/_/Audio/Output/Enable" to="." method="_on_audio_output_enable_toggled"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/Master/Volume" to="." method="_on_audio_master_volume_value_changed"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/Music/Volume" to="." method="_on_audio_music_volume_value_changed"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/SFX/Volume" to="." method="_on_audio_sfx_volume_value_changed"]
+[connection signal="pressed" from="Contents/_/_/Options/Scroller/_/Audio/Buttons/DeviceSetup" to="." method="_on_audio_device_setup_pressed"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Window/Mode" to="." method="_on_display_window_mode_item_selected"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Screen/Resolution" to="." method="_on_display_resolution_item_selected"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/UserInterface/Scale" to="." method="_on_display_ui_scale_value_changed"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/FrameRate/Cap" to="." method="_on_display_frame_rate_cap_value_changed"]
+[connection signal="toggled" from="Contents/_/_/Options/Scroller/_/Display/Vsync/Mode" to="." method="_on_display_vsync_mode_toggled"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/Shadow/Quality" to="." method="_on_display_shadow_quality_value_changed"]
+[connection signal="pressed" from="Contents/_/_/Options/Scroller/_/Display/Buttons/Benchmark" to="." method="_on_display_benchmark_pressed"]
+[connection signal="confirmed" from="Contents/_/_/Options/Scroller/_/Display/BenchmarkConfirmation" to="." method="_on_display_benchmark_confirmed"]
+[connection signal="confirmed" from="DefaultsConfirmation" to="." method="_on_restore_defaults_confirmed"]

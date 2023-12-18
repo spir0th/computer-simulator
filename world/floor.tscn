@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://rq6fchohpijm"]
+
+[ext_resource type="Texture2D" uid="uid://cwrf03gc2lesx" path="res://world/floor.png" id="1_nt0ch"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0vhy"]
+albedo_texture = ExtResource("1_nt0ch")
+metallic = 0.6
+roughness = 0.8
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fr7aa"]
+lightmap_size_hint = Vector2i(42, 42)
+material = SubResource("StandardMaterial3D_q0vhy")
+size = Vector2(8, 8)
+
+[node name="Floor" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_fr7aa")

@@ -1,0 +1,155 @@
+[gd_scene load_steps=6 format=3 uid="uid://lhvfbwbbghvk"]
+
+[ext_resource type="Script" path="res://interface/menu/main.gd" id="1_3osww"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2or6o"]
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_p6low"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_load_game"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jppxr"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Contents/_/Navigation/Start")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtgjc"]
+_data = {
+"end": SubResource("Animation_p6low"),
+"start": SubResource("Animation_jppxr")
+}
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3osww")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Color" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Contents" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="_" type="VBoxContainer" parent="Contents"]
+layout_mode = 2
+
+[node name="Header" type="VBoxContainer" parent="Contents/_"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Contents/_/Header"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_2or6o")
+
+[node name="Navigation" type="HBoxContainer" parent="Contents/_"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Contents/_/Navigation"]
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="Contents/_/Navigation"]
+layout_mode = 2
+text = "Options"
+
+[node name="Help" type="Button" parent="Contents/_/Navigation"]
+layout_mode = 2
+text = "Help
+"
+
+[node name="Quit" type="Button" parent="Contents/_/Navigation"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Background/Color")
+libraries = {
+"": SubResource("AnimationLibrary_jtgjc")
+}
+
+[node name="QuitConfirmation" type="ConfirmationDialog" parent="."]
+title = "Quit Game"
+initial_position = 4
+ok_button_text = "Yes"
+dialog_text = "Do you want to quit?"
+cancel_button_text = "No"
+
+[connection signal="pressed" from="Contents/_/Navigation/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Contents/_/Navigation/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Contents/_/Navigation/Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]
+[connection signal="animation_started" from="Animator" to="." method="_on_animation_started"]
+[connection signal="confirmed" from="QuitConfirmation" to="." method="_on_quit_confirmation_confirmed"]

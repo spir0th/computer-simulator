@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgocvvompnun8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cp6b3"]
+font_size = 64
+
+[node name="Screen" type="SubViewport"]
+size = Vector2i(1280, 720)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Windows 10"
+label_settings = SubResource("LabelSettings_cp6b3")
+horizontal_alignment = 1
+vertical_alignment = 1

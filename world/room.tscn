@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://dv6ymodk4we22"]
+
+[ext_resource type="PackedScene" uid="uid://dwfg5m3hs018p" path="res://world/bed.tscn" id="1_0bd1p"]
+[ext_resource type="Texture2D" uid="uid://btdqmtdj1elc1" path="res://world/room.png" id="1_nqocp"]
+[ext_resource type="PackedScene" uid="uid://rq6fchohpijm" path="res://world/floor.tscn" id="1_sh7x6"]
+[ext_resource type="PackedScene" uid="uid://bdqjr2uimw5a1" path="res://world/window.tscn" id="1_t6ewt"]
+[ext_resource type="PackedScene" uid="uid://b15q14vrm5nrb" path="res://world/drawer.tscn" id="3_hbttg"]
+[ext_resource type="PackedScene" uid="uid://2ngrdhrech40" path="res://world/floor2.tscn" id="3_qwecv"]
+[ext_resource type="PackedScene" uid="uid://c0ihyc8rb5tfh" path="res://world/desk.tscn" id="5_p6jie"]
+[ext_resource type="PackedScene" uid="uid://dfcu2h2v8twym" path="res://world/lightbulb.tscn" id="6_7wq18"]
+[ext_resource type="PackedScene" uid="uid://dnrd8pc7w8qi0" path="res://world/door.tscn" id="7_2ve40"]
+[ext_resource type="PackedScene" uid="uid://djxrxmco158xh" path="res://world/closet.tscn" id="7_gb6ie"]
+[ext_resource type="PackedScene" uid="uid://cpst4jrqg25d1" path="res://world/player.tscn" id="8_e7mst"]
+[ext_resource type="PackedScene" uid="uid://df3kqr6xiw7cm" path="res://world/lamp.tscn" id="8_pg6py"]
+[ext_resource type="PackedScene" uid="uid://bi1ibn404ftcq" path="res://world/switch.tscn" id="8_tqs5j"]
+[ext_resource type="PackedScene" uid="uid://c6v0ejnxpwqrx" path="res://world/monitor.tscn" id="10_cb8u3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13u2"]
+albedo_texture = ExtResource("1_nqocp")
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iqwhs"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.0901961, 0.117647, 0.294118, 1)
+sky_curve = 0.09
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_7vej7"]
+sky_material = SubResource("ProceduralSkyMaterial_iqwhs")
+
+[sub_resource type="Environment" id="Environment_cj2ig"]
+background_mode = 2
+sky = SubResource("Sky_7vej7")
+
+[node name="Room" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86161, 0, 0.00347057)
+use_collision = true
+flip_faces = true
+size = Vector3(8, 3, 8)
+material = SubResource("StandardMaterial3D_q13u2")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cj2ig")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2.4963, 2, 6.99653)
+light_color = Color(0.117647, 0.117647, 0.117647, 1)
+light_energy = 0.0
+light_angular_distance = 75.0
+directional_shadow_mode = 0
+
+[node name="Floor" parent="." instance=ExtResource("1_sh7x6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.49, 0)
+
+[node name="Ceiling" parent="." instance=ExtResource("3_qwecv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49, 0)
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00370002, 0, -0.00347057)
+
+[node name="Lightbulb" parent="Props" instance=ExtResource("6_7wq18")]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 1.5, 0)
+light_energy = 0.5
+light_specular = 0.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 5.0
+
+[node name="Window" parent="Props" instance=ExtResource("1_t6ewt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, -0.15, 4)
+
+[node name="Bed" parent="Props" instance=ExtResource("1_0bd1p")]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, -3, -1.5, 3)
+
+[node name="Drawer" parent="Props" instance=ExtResource("3_hbttg")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1, -1.5, 3.1)
+
+[node name="Desk" parent="Props" instance=ExtResource("5_p6jie")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, -1.1, -1.5, -1.1)
+
+[node name="Lamp" parent="Props/Desk" instance=ExtResource("8_pg6py")]
+transform = Transform3D(-0.116834, 0, 0.276315, 0, 0.3, 0, -0.276315, 0, -0.116834, -0.742, 0.38, 0.823)
+
+[node name="Monitor" parent="Props/Desk" instance=ExtResource("10_cb8u3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8, 0.38, 0.5)
+
+[node name="Door" parent="Props" instance=ExtResource("7_2ve40")]
+transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 3.9, -1.5, 0)
+
+[node name="Closet" parent="Props" instance=ExtResource("7_gb6ie")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3, -1.5, 3.1)
+
+[node name="Switch" parent="Props" node_paths=PackedStringArray("_sun", "_light") instance=ExtResource("8_tqs5j")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 4, 0.5, -0.5)
+_sun = NodePath("../../Sun")
+_light = NodePath("../Lightbulb")
+
+[node name="Player" parent="." instance=ExtResource("8_e7mst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.3, 0.5)

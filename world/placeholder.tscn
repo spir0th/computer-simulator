@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg2if0cylm72m"]
+
+[ext_resource type="Texture2D" uid="uid://btdqmtdj1elc1" path="res://world/room.png" id="1_8gjp4"]
+[ext_resource type="PackedScene" uid="uid://dfcu2h2v8twym" path="res://world/lightbulb.tscn" id="4_o4g4h"]
+[ext_resource type="PackedScene" uid="uid://c0ihyc8rb5tfh" path="res://world/desk.tscn" id="8_crbcj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13u2"]
+albedo_texture = ExtResource("1_8gjp4")
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iqwhs"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.0901961, 0.117647, 0.294118, 1)
+sky_curve = 0.09
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_7vej7"]
+sky_material = SubResource("ProceduralSkyMaterial_iqwhs")
+
+[sub_resource type="Environment" id="Environment_cj2ig"]
+background_mode = 2
+sky = SubResource("Sky_7vej7")
+
+[node name="Room" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86161, 0, 0.00347057)
+use_collision = true
+flip_faces = true
+size = Vector3(5, 3, 5)
+material = SubResource("StandardMaterial3D_q13u2")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cj2ig")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.5, 2, 6.997)
+light_color = Color(0.117647, 0.117647, 0.117647, 1)
+light_energy = 0.0
+light_angular_distance = 75.0
+directional_shadow_mode = 0
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00370002, 0, -0.00347057)
+
+[node name="Lightbulb" parent="Props" instance=ExtResource("4_o4g4h")]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 1.5, 0)
+light_energy = 0.5
+light_specular = 0.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 5.0
+
+[node name="Desk" parent="Props" instance=ExtResource("8_crbcj")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 0.5, -1.5, 0.5)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0.5, 0, 1)
+current = true
+fov = 50.0

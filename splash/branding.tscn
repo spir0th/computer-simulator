@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://np7f3tdafhsd"]
+
+[ext_resource type="Script" path="res://splash/branding.gd" id="1_0yuei"]
+[ext_resource type="Texture2D" uid="uid://cx7gdxa7jenaq" path="res://splash/beanie.png" id="1_mi6e5"]
+
+[sub_resource type="Animation" id="Animation_b0883"]
+resource_name = "branding-start"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Brand:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5j2xl"]
+_data = {
+"branding-start": SubResource("Animation_b0883")
+}
+
+[node name="BrandingScreen" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0yuei")
+
+[node name="Brand" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_mi6e5")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5j2xl")
+}

@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://bno02dqcexll"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_f35v6"]
+[ext_resource type="PackedScene" uid="uid://dv6ymodk4we22" path="res://world/room.tscn" id="1_w5nfb"]
+[ext_resource type="PackedScene" uid="uid://bva0iuefl7w51" path="res://interface/menu/pause.tscn" id="3_8ne1r"]
+
+[sub_resource type="Animation" id="Animation_gdg13"]
+resource_name = "freeze"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_0xkui"]
+resource_name = "unfreeze"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4lck1"]
+resource_name = "wake-up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03i04"]
+_data = {
+"freeze": SubResource("Animation_gdg13"),
+"unfreeze": SubResource("Animation_0xkui"),
+"wake-up": SubResource("Animation_4lck1")
+}
+
+[node name="Game" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f35v6")
+
+[node name="Room" parent="." instance=ExtResource("1_w5nfb")]
+
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Background" type="ColorRect" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Menu" parent="Pause" instance=ExtResource("3_8ne1r")]
+
+[node name="Animator" type="AnimationPlayer" parent="Pause"]
+libraries = {
+"": SubResource("AnimationLibrary_03i04")
+}

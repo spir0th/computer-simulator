@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ngrdhrech40"]
+
+[ext_resource type="Texture2D" uid="uid://bgbt3mn5g87nh" path="res://world/floor2.png" id="1_d3c45"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e6uo"]
+albedo_texture = ExtResource("1_d3c45")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jgarq"]
+material = SubResource("StandardMaterial3D_3e6uo")
+flip_faces = true
+size = Vector2(8, 8)
+
+[node name="Ceiling" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_jgarq")

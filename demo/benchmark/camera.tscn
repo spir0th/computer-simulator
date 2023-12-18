@@ -1,0 +1,395 @@
+[gd_scene load_steps=16 format=3 uid="uid://dd8jvm1vtbky7"]
+
+[ext_resource type="Script" path="res://demo/benchmark/camera.gd" id="1_2ilel"]
+[ext_resource type="Texture2D" uid="uid://c8t6h5tu46y7i" path="res://demo/benchmark/platform.png" id="1_kd87b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fa6p4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_c78lk"]
+sky_material = SubResource("ProceduralSkyMaterial_fa6p4")
+
+[sub_resource type="Environment" id="Environment_xtmw1"]
+background_mode = 2
+sky = SubResource("Sky_c78lk")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p0v4"]
+albedo_texture = ExtResource("1_kd87b")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="Animation" id="Animation_f4ito"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+
+[sub_resource type="Animation" id="Animation_dmpnq"]
+resource_name = "benchmark"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interface/Header:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rp00u"]
+resource_name = "benchmark~1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 5), Vector3(0, 1, 1), Vector3(1.50275, 1, -0.401707), Vector3(1.43204, 1, -1.66215), Vector3(-1.08902, 1, -1.66215), Vector3(-5.16734, 1, -1.66215), Vector3(-5.16734, 1, 1.84224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.693646, 0, 0), Vector3(-0.693646, 1.7203, -9.41822e-09), Vector3(-0.693646, 2.9191, -9.41822e-09), Vector3(-0.692896, 3.42085, 0), Vector3(-0.329867, -2.07694, 0), Vector3(-0.329867, -1.01248, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2, 4, 5),
+"transitions": PackedFloat32Array(4.59479, 1, 1, 1),
+"update": 0,
+"values": [75.0, 120.0, 50.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_i8l1n"]
+resource_name = "benchmark~2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, 3.214), Vector3(0, 1, 3.214), Vector3(0, 3, 3.214), Vector3(0, 3, 3.214), Vector3(0, 3, 3.214)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 3.1, 4, 4.1, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 75.0, 50.0, 50.0, 120.0, 120.0, 50.0, 50.0, 75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.872665, 0, 0), Vector3(-0.872665, 0, 0), Vector3(-0.872665, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m8765"]
+resource_name = "benchmark~3"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 120.0, 120.0, 50.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 10), Vector3(0, 1, 4.1704), Vector3(-1.77209, 1, 3.01092), Vector3(-1.77209, 1, -2.54498), Vector3(3.08956, 1, -2.54498), Vector3(3.08956, 1, 2.36262), Vector3(0, 1, 2.363), Vector3(0, 1, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.523599, 0), Vector3(0, -2.26893, 0), Vector3(0, 2.26893, 0), Vector3(0, 0.872665, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_te55r"]
+resource_name = "benchmark~4"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.174533, 0, 0), Vector3(0.174533, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.182098, 2.34424), Vector3(0, 0.182098, -1.7986)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [50.0, 120.0]
+}
+
+[sub_resource type="Animation" id="Animation_qwwt5"]
+resource_name = "benchmark~5"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.1, 0), Vector3(0, 5, 0), Vector3(0, 5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(-1.5708, 0, 0), Vector3(0.872665, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:fov")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [120.0, 75.0, 50.0]
+}
+
+[sub_resource type="Animation" id="Animation_puwbc"]
+resource_name = "outro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interface/Header:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interface/Header/Title:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jv5t"]
+_data = {
+"RESET": SubResource("Animation_f4ito"),
+"benchmark": SubResource("Animation_dmpnq"),
+"benchmark~1": SubResource("Animation_rp00u"),
+"benchmark~2": SubResource("Animation_i8l1n"),
+"benchmark~3": SubResource("Animation_m8765"),
+"benchmark~4": SubResource("Animation_te55r"),
+"benchmark~5": SubResource("Animation_qwwt5"),
+"outro": SubResource("Animation_puwbc")
+}
+
+[node name="Benchmark" type="Node3D"]
+script = ExtResource("1_2ilel")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xtmw1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Platform" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.37483, 0.18158, 0, 0)
+use_collision = true
+size = Vector3(4.69031, 0.05, 1)
+material = SubResource("StandardMaterial3D_7p0v4")
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_" type="Label" parent="Interface"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Benchmark mode"
+
+[node name="Header" type="ColorRect" parent="Interface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="Interface/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Cylinder" type="CSGCylinder3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53808, 0, 1.04618)
+
+[node name="Cylinder2" type="CSGCylinder3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53808, 0, -0.664434)
+
+[node name="Donut" type="CSGTorus3D" parent="Props"]
+transform = Transform3D(-0.000488683, 1, 0, -1, -0.000488683, 0, 0, 0, 1, -1.34978, 0.608831, 0)
+sides = 64
+ring_sides = 64
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+current = true
+
+[node name="Animator" type="AnimationPlayer" parent="Camera"]
+root_node = NodePath("../..")
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_1jv5t")
+}
+
+[connection signal="animation_finished" from="Camera/Animator" to="." method="_on_benchmark_animation_finished"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkfgiqy8iw40b"]
+
+[ext_resource type="Script" path="res://interface/setup/audio_device.gd" id="1_ibaf8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkutj"]
+font_size = 14
+
+[node name="AudioDeviceSetup" type="Window"]
+title = "Audio Device Setup"
+initial_position = 4
+size = Vector2i(500, 500)
+unresizable = true
+script = ExtResource("1_ibaf8")
+
+[node name="Contents" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_" type="MarginContainer" parent="Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="_" type="VBoxContainer" parent="Contents/_"]
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Contents/_/_"]
+layout_mode = 2
+text = "Choose which device do you prefer to use:"
+label_settings = SubResource("LabelSettings_dkutj")
+
+[node name="DeviceList" type="ItemList" parent="Contents/_/_"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_rmb_select = true
+
+[node name="Confirmation" type="Button" parent="Contents/_/_"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="NoDeviceSelectedError" type="AcceptDialog" parent="."]
+title = "Cannot switch device!"
+initial_position = 4
+size = Vector2i(300, 100)
+dialog_text = "No device selected."
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="window_input" from="." to="." method="_on_window_input"]
+[connection signal="pressed" from="Contents/_/_/Confirmation" to="." method="_on_confirmation_pressed"]
