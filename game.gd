@@ -12,7 +12,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if Global.player == null:
 			# If the escape key has been pressed but the player is nowhere to be found
-			# Just do nothing as some node had been probably using the input events.
+			# Just do nothing as some node had been probably handling the inputs.
 			return
 		
 		get_tree().paused = not get_tree().paused

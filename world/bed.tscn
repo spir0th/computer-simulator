@@ -1,4 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwfg5m3hs018p"]
+[gd_scene load_steps=10 format=3 uid="uid://dwfg5m3hs018p"]
+
+[ext_resource type="Script" path="res://world/bed.gd" id="1_4n7x0"]
+[ext_resource type="PackedScene" uid="uid://b4j5mvmwd1xug" path="res://world/interactable.tscn" id="1_raet2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7n4d"]
 resource_name = "039BE5"
@@ -123,6 +126,10 @@ shadow_mesh = SubResource("ArrayMesh_cn1tx")
 points = PackedVector3Array(5.98844, 6.20803, -2.53196, 5.86062, 6.94636, 14.8954, 5.98844, 0.478427, -2.53196, 5.85945, 9.27613, -6.26433, 5.85945, 9.27613, -5.06716, -5.8618, 6.94636, 14.8954, 5.86062, -0.008929, 14.8954, 3.0206, 9.50863, -4.19309, -0.00117302, 9.92886, -5.06716, 5.85945, -0.008929, -6.26433, -0.00117302, 9.92886, -6.26433, -5.98961, 6.20803, -2.53196, -5.8618, -0.008929, 14.8954, -3.02295, 9.50863, -4.19309, -5.8618, 9.27613, -5.06716, -5.8618, -0.008929, -6.26433, -5.8618, 9.27613, -6.26433, -5.98961, 0.478427, -2.53196)
 
 [node name="Bed" type="StaticBody3D"]
+script = ExtResource("1_4n7x0")
+
+[node name="Interactable" parent="." instance=ExtResource("1_raet2")]
+task = "Lay down"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ucqe5")
@@ -130,3 +137,9 @@ skeleton = NodePath("")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_efhxo")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(-1, -4.37114e-08, -7.57103e-08, 0, 0.866025, -0.5, 8.74228e-08, -0.5, -0.866025, 0, 8, -1.136)
+fov = 120.0
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
