@@ -2,4 +2,4 @@
 .godot/
 
 # Exported binaries
-ComputerSimulator-*.exe
+ComputerSimulator*.exe
