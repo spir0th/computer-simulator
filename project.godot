@@ -32,6 +32,7 @@ buses/default_bus_layout="res://bus_layout.tres"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 WindowportResizer="*res://addons/windowport_resizer/resizer.gd"
 Global="*res://global.gd"
+Settings="*res://settings.gd"
 
 [display]
 
@@ -123,4 +124,4 @@ textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 renderer/rendering_method.debug="gl_compatibility"
 renderer/rendering_method.editor="gl_compatibility"
-camera/field_of_view/value=0.0
+camera/field_of_view/value=75.0
