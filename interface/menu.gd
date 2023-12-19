@@ -45,8 +45,8 @@ func _on_visibility_changed():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			_content_navigation_btn_resume.release_focus()
 		
-		_update_background()
-		_update_buttons()
+	_update_background()
+	_update_buttons()
 
 func _on_start_pressed():
 	if type != MenuType.MAIN:
