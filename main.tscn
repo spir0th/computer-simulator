@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_54gj3"]
 [ext_resource type="PackedScene" uid="uid://bg2if0cylm72m" path="res://world/placeholder.tscn" id="2_br6di"]
-[ext_resource type="PackedScene" uid="uid://lhvfbwbbghvk" path="res://interface/menu/main.tscn" id="2_o08it"]
+[ext_resource type="PackedScene" uid="uid://lhvfbwbbghvk" path="res://interface/menu.tscn" id="2_o08it"]
 
 [node name="Main" type="Control"]
 process_mode = 3
@@ -18,3 +18,5 @@ script = ExtResource("1_54gj3")
 
 [node name="Menu" parent="." instance=ExtResource("2_o08it")]
 layout_mode = 1
+
+[connection signal="started" from="Menu" to="." method="_on_menu_started"]

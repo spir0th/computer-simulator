@@ -1,14 +1,8 @@
 extends Control
 
-@onready var _pause_background = $Pause/Background
-@onready var _pause_menu = $Pause/Menu
-@onready var _pause_animator = $Pause/Animator
+@onready var _pause_menu = $Menu
 
-func _ready():
-	# Auto-play wake up animation when world is ready.
-	_pause_animator.play("wake-up")
-
-func _input(event):
+func _unhandled_key_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if Global.player == null:
 			# If the escape key has been pressed but the player is nowhere to be found
@@ -20,7 +14,10 @@ func _input(event):
 func _process(_delta):
 	if get_tree().paused:
 		if not _pause_menu.visible:
-			_pause_animator.play("freeze")
+			_pause_menu.show()
 	else:
 		if _pause_menu.visible:
-			_pause_animator.play("unfreeze")
+			_pause_menu.hide()
+
+func _on_menu_resumed():
+	get_tree().paused = false

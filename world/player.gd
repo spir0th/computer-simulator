@@ -27,7 +27,7 @@ func _process(_delta):
 	_camera_mouse_sensitivity = Global.camera_default_sensitivity
 	_camera_fov = Global.camera_default_fov
 
-func _unhandled_input(event):
+func _input(event):
 	if Global.player != self or not _camera.is_current():
 		return
 	if event is InputEventMouseMotion:
