@@ -5,7 +5,7 @@ const TAB_INDEX_DISPLAY = 1
 const TAB_INDEX_INPUT = 2
 const TAB_INDEX_LANGUAGE = 3
 
-var _audio_device_setup = preload("res://interface/setup/audio_device.tscn")
+var _audio_device_setup = preload("res://interface/audio_device.tscn")
 var _audio_bus_master_idx = AudioServer.get_bus_index("Master")
 var _audio_bus_music_idx = AudioServer.get_bus_index("Music")
 var _audio_bus_sfx_idx = AudioServer.get_bus_index("SFX")

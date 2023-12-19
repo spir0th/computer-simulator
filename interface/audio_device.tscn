@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkfgiqy8iw40b"]
 
-[ext_resource type="Script" path="res://interface/setup/audio_device.gd" id="1_ibaf8"]
+[ext_resource type="Script" path="res://interface/audio_device.gd" id="1_ibaf8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dkutj"]
 font_size = 14
