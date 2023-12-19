@@ -37,9 +37,6 @@ func _ready():
 	elif type == MenuType.PAUSE:
 		hide()
 
-func _process(_delta):
-	print(_background.color)
-
 func _on_visibility_changed():
 	if is_node_ready():
 		if type == MenuType.PAUSE:
