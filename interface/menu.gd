@@ -37,6 +37,12 @@ func _ready():
 	elif type == MenuType.PAUSE:
 		hide()
 
+func _enter_tree():
+	Global.menu = self
+
+func _exit_tree():
+	Global.menu = null
+
 func _on_visibility_changed():
 	if is_node_ready():
 		if type == MenuType.PAUSE:

@@ -12,5 +12,7 @@ var application_version = ProjectSettings.get_setting("application/config/versio
 var camera_default_sensitivity = 0.25
 var camera_default_fov = 75.0
 #endregion
-
+#region Variables
 var player # The player node that is currently being used in-game.
+var menu # The menu node, it may be null or non-null, depending on the current scene.
+#endif
