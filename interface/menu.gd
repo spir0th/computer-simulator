@@ -20,10 +20,12 @@ var _settings = preload("res://interface/settings.tscn")
 @onready var _content_navigation_btn_resume = $Content/_/Navigation/Resume
 @onready var _content_navigation_btn_options = $Content/_/Navigation/Options
 @onready var _content_navigation_btn_help = $Content/_/Navigation/Help
+@onready var _content_navigation_btn_main_menu = $Content/_/Navigation/MainMenu
 @onready var _content_navigation_btn_quit = $Content/_/Navigation/Quit
 
 @onready var _animator = $Animator
 
+@onready var _confirmation_main_menu = $MainMenuConfirmation
 @onready var _confirmation_quit = $QuitConfirmation
 
 func _ready():
@@ -65,8 +67,14 @@ func _on_resume_pressed():
 func _on_options_pressed():
 	get_parent().add_child(_settings.instantiate())
 
+func _on_main_menu_pressed():
+	_confirmation_main_menu.show()
+
 func _on_quit_pressed():
 	_confirmation_quit.show()
+
+func _on_main_menu_confirmed():
+	get_tree().change_scene_to_file("res://main.tscn")
 
 func _on_quit_confirmation_confirmed():
 	get_tree().quit()
@@ -107,6 +115,7 @@ func _update_buttons():
 		_content_navigation_btn_start.show()
 	elif type == MenuType.PAUSE:
 		_content_navigation_btn_resume.show()
+		_content_navigation_btn_main_menu.show()
 	
 	_content_navigation_btn_options.show()
 	_content_navigation_btn_help.show()

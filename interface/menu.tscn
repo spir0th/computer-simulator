@@ -139,6 +139,10 @@ layout_mode = 2
 text = "Help
 "
 
+[node name="MainMenu" type="Button" parent="Content/_/Navigation"]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Quit"
@@ -148,6 +152,13 @@ root_node = NodePath("../Background")
 libraries = {
 "": SubResource("AnimationLibrary_jtgjc")
 }
+
+[node name="MainMenuConfirmation" type="ConfirmationDialog" parent="."]
+title = "Notice"
+initial_position = 4
+size = Vector2i(450, 106)
+dialog_text = "Do you want to stop playing and return to main menu? All unsaved progress will be lost."
+dialog_autowrap = true
 
 [node name="QuitConfirmation" type="ConfirmationDialog" parent="."]
 title = "Quit Game"
@@ -160,7 +171,9 @@ cancel_button_text = "No"
 [connection signal="pressed" from="Content/_/Navigation/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Content/_/Navigation/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Content/_/Navigation/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Content/_/Navigation/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Content/_/Navigation/Quit" to="." method="_on_quit_pressed"]
 [connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]
 [connection signal="animation_started" from="Animator" to="." method="_on_animation_started"]
+[connection signal="confirmed" from="MainMenuConfirmation" to="." method="_on_main_menu_confirmed"]
 [connection signal="confirmed" from="QuitConfirmation" to="." method="_on_quit_confirmation_confirmed"]
