@@ -27,7 +27,6 @@ var _settings = preload("res://interface/settings.tscn")
 @onready var _confirmation_quit = $QuitConfirmation
 
 func _ready():
-	_update_background()
 	_update_title()
 	_update_buttons()
 	
@@ -36,17 +35,20 @@ func _ready():
 	elif type == MenuType.PAUSE:
 		hide()
 
+func _process(_delta):
+	print(_background.color)
+
 func _on_visibility_changed():
-	if type == MenuType.PAUSE and is_node_ready():
-		if visible:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			_content_navigation_btn_resume.grab_focus()
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			_content_navigation_btn_resume.release_focus()
+	if is_node_ready():
+		if type == MenuType.PAUSE:
+			if visible:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				_pause_start()
+			else:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				_pause_end()
 		
-	_update_background()
-	_update_buttons()
+		_update_buttons()
 
 func _on_start_pressed():
 	if type != MenuType.MAIN:
@@ -85,11 +87,15 @@ func _main_end():
 	await _animator.animation_finished
 	emit_signal("started")
 
-func _update_background():
-	if type == MenuType.MAIN:
-		_background.color = Color.TRANSPARENT
-	else:
-		_background.color = Color("#000000c8")
+func _pause_start():
+	_animator.play("start-pause")
+	await _animator.animation_finished
+	_content_navigation_btn_resume.grab_focus()
+
+func _pause_end():
+	_animator.play("end-pause")
+	await _animator.animation_finished
+	_content_navigation_btn_resume.release_focus()
 
 func _update_title():
 	_content_title.text = Global.application_name
