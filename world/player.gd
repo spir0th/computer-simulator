@@ -46,7 +46,7 @@ func _input(event):
 	if event.is_action_pressed("player_interact") and _raycast.is_colliding():
 		var object = _raycast.get_collider()
 		
-		if object.has_node("Interactable"):
+		if object.has_node("Interactable") and velocity.length() < 1:
 			var interactable = object.get_node("Interactable")
 			interactable.emit_signal("interacted")
 			_prompt.hide()
@@ -88,7 +88,7 @@ func _physics_process(delta):
 	if _raycast.is_colliding():
 		var object = _raycast.get_collider()
 		
-		if object.has_node("Interactable"):
+		if object.has_node("Interactable") and velocity.length() < 1:
 			var interactable = object.get_node("Interactable")
 			_prompt.action = interactable.action
 			_prompt.task = interactable.task

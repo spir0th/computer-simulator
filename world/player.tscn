@@ -103,7 +103,6 @@ target_position = Vector3(0, 0, -1.5)
 [node name="Prompt" parent="Head" instance=ExtResource("2_oo66v")]
 
 [node name="_" type="AudioStreamPlayer3D" parent="."]
-bus = &"SFX"
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
