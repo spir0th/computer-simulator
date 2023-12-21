@@ -5,49 +5,59 @@ const TAB_INDEX_DISPLAY = 1
 const TAB_INDEX_INPUT = 2
 const TAB_INDEX_LANGUAGE = 3
 
-var _audio_device_setup = preload("res://interface/audio_device.tscn")
-var _audio_bus_master_idx = AudioServer.get_bus_index("Master")
-var _audio_bus_music_idx = AudioServer.get_bus_index("Music")
-var _audio_bus_sfx_idx = AudioServer.get_bus_index("SFX")
-
-var _display_window_modes = [
+const DISPLAY_RENDERER_METHODS = [
+	"gl_compatibility", # OpenGL rendering (runs on most hardware)
+	"forward_plus" # Vulkan rendering (incompatible with older hardware)
+]
+const DISPLAY_WINDOW_MODES = [
 	DisplayServer.WINDOW_MODE_WINDOWED,
 	DisplayServer.WINDOW_MODE_FULLSCREEN,
 	DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 ]
-var _display_vsync_modes = [
+const DISPLAY_VSYNC_MODES = [
 	DisplayServer.VSYNC_DISABLED,
 	DisplayServer.VSYNC_ENABLED,
 	DisplayServer.VSYNC_ADAPTIVE
 ]
-var _display_scaling_3d_modes = [
-	Viewport.SCALING_3D_MODE_BILINEAR,
-	Viewport.SCALING_3D_MODE_FSR,
-	Viewport.SCALING_3D_MODE_FSR2
+const DISPLAY_RESOLUTION_VALUES = [
+	Vector2i(0, 0), # reserved
+	Vector2i(640, 480), # 640x480 (4:3)
+	Vector2i(800, 600), # 800x600 (4:3)
+	Vector2i(1024, 768), # 1024x768 (4:3)
+	Vector2i(0, 0), # reserved
+	Vector2i(960, 540), # 960x540 (16:9)
+	Vector2i(1280, 720), # 1280x720 (16:9)
+	Vector2i(1366, 768), # 1366x768 (16:9)
+	Vector2i(1920, 1080), # 1920x1080 (16:9)
 ]
-var _display_scaling_3d_scales = [
-	0.50, # 50%
-	0.75, # 75%
-	0.95, # 95%
-	1.00 # 100%
+const DISPLAY_SCALE_MODES = [
+	Window.CONTENT_SCALE_MODE_CANVAS_ITEMS,
+	Window.CONTENT_SCALE_MODE_VIEWPORT
 ]
-var _display_msaa_values = [
+const DISPLAY_SCALE_VALUES = [
+	1.0, # 100%
+	1.2, # 125%
+	1.5, # 150%
+	2.0 # 200%
+]
+const DISPLAY_SHADOW_VALUES = [
+	0, # Off
+	4096, # Low
+	8192, # Medium
+	16384 # High
+]
+const DISPLAY_MSAA_VALUES = [
 	Viewport.MSAA_DISABLED,
 	Viewport.MSAA_2X,
 	Viewport.MSAA_4X,
 	Viewport.MSAA_8X
 ]
-var _display_fxaa_values = [
+const DISPLAY_SSAA_VALUES = [
 	Viewport.SCREEN_SPACE_AA_DISABLED,
 	Viewport.SCREEN_SPACE_AA_FXAA
 ]
-var _display_shadow_sizes = [
-	1024, # very low
-	2048, # low (default, mobile)
-	4096, # medium (default)
-	8192, # high
-	16384 # ultra
-]
+
+var _audio_bus_master = AudioServer.get_bus_index("Master")
 
 @onready var _scroller = $Contents/_/_/Options/Scroller/_
 
@@ -56,32 +66,28 @@ var _display_shadow_sizes = [
 @onready var _option_input = $Contents/_/_/Options/Scroller/_/Input
 @onready var _option_language = $Contents/_/_/Options/Scroller/_/Language
 
-@onready var _btn_restore_defaults = $Contents/_/_/Header/RestoreDefaults
+@onready var _header_btn_restore_defaults = $Contents/_/_/Header/RestoreDefaults
 
-@onready var _audio_output_enable = $Contents/_/_/Options/Scroller/_/Audio/Output/Enable
 @onready var _audio_output_device = $Contents/_/_/Options/Scroller/_/Audio/Output/Device
 @onready var _audio_master_volume = $Contents/_/_/Options/Scroller/_/Audio/Master/Volume
-@onready var _audio_music_volume = $Contents/_/_/Options/Scroller/_/Audio/Music/Volume
-@onready var _audio_sfx_volume = $Contents/_/_/Options/Scroller/_/Audio/SFX/Volume
-@onready var _audio_btn_device_setup = $Contents/_/_/Options/Scroller/_/Audio/Buttons/DeviceSetup
 
-@onready var _display_graphics_name = $Contents/_/_/Options/Scroller/_/Display/Graphics/Name
-@onready var _display_graphics_memory_usage = $Contents/_/_/Options/Scroller/_/Display/Graphics/MemoryUsage
+@onready var _display_renderer_method = $Contents/_/_/Options/Scroller/_/Display/Renderer/Method
 @onready var _display_window_mode = $Contents/_/_/Options/Scroller/_/Display/Window/Mode
-@onready var _display_vsync_mode = $Contents/_/_/Options/Scroller/_/Display/Vsync/Mode
-@onready var _display_scaling_3d_mode = $Contents/_/_/Options/Scroller/_/Display/Scaling3D/Mode
-@onready var _display_scaling_3d_scale = $Contents/_/_/Options/Scroller/_/Display/Scaling3D/Scale
-@onready var _display_fsr_sharpness = $Contents/_/_/Options/Scroller/_/Display/FSR/Sharpness
+@onready var _display_vsync_mode = $Contents/_/_/Options/Scroller/_/Display/VSync/Mode
+@onready var _display_resolution_value = $Contents/_/_/Options/Scroller/_/Display/Resolution/Value
+@onready var _display_scale_mode = $Contents/_/_/Options/Scroller/_/Display/Scale/Mode
+@onready var _display_scale_value = $Contents/_/_/Options/Scroller/_/Display/Scale/Value
+@onready var _display_fov_value = $Contents/_/_/Options/Scroller/_/Display/FOV/Value
+@onready var _display_shadow_value = $Contents/_/_/Options/Scroller/_/Display/Shadow/Value
 @onready var _display_msaa_value = $Contents/_/_/Options/Scroller/_/Display/MSAA/Value
-@onready var _display_fxaa_value = $Contents/_/_/Options/Scroller/_/Display/FXAA/Value
-@onready var _display_shadow_size = $Contents/_/_/Options/Scroller/_/Display/Shadow/Size
-@onready var _display_btn_benchmark = $Contents/_/_/Options/Scroller/_/Display/Buttons/Benchmark
-@onready var _display_confirmation_benchmark = $Contents/_/_/Options/Scroller/_/Display/BenchmarkConfirmation
+@onready var _display_ssaa_value = $Contents/_/_/Options/Scroller/_/Display/SSAA/Value
 
 @onready var _input_mouse_sensitivity = $Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
 @onready var _warning_restart_btn_confirm = $Contents/_/_/RestartWarning/Confirm
+
+@onready var _warning_editor = $Contents/_/_/EditorWarning
 
 @onready var _confirmation_restart = $RestartConfirmation
 @onready var _confirmation_defaults = $DefaultsConfirmation
@@ -90,20 +96,15 @@ func _ready():
 	_retrieve_audio_settings()
 	_retrieve_display_settings()
 	_retrieve_input_settings()
-	_audio_output_enable.grab_focus()
+	_warning_restart.hide()
+	_warning_editor.hide()
+	
+	if OS.has_meta("editor"):
+		_warning_editor.show()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		queue_free()
-
-func _process(_delta):
-	if _audio_output_device.visible:
-		_audio_output_device.text = "Output: %s" % AudioServer.output_device
-	if _display_graphics_name.visible:
-		_display_graphics_name.text = "%s (%s)" % [RenderingServer.get_video_adapter_name(), RenderingServer.get_video_adapter_vendor()]
-	if _display_graphics_memory_usage.visible:
-		var display_graphics_mem_used = String.humanize_size(RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_VIDEO_MEM_USED))
-		_display_graphics_memory_usage.text = "Memory usage: %s" % display_graphics_mem_used
 
 func _on_window_input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -127,130 +128,208 @@ func _on_navigation_tab_changed(tab):
 func _on_restore_defaults_pressed():
 	_confirmation_defaults.show()
 
-func _on_audio_output_enable_toggled(button_pressed):
-	AudioServer.set_bus_mute(_audio_bus_master_idx, not button_pressed)
-	
-	if button_pressed:
-		_audio_master_volume.editable = true
-		_audio_music_volume.editable = true
-		_audio_sfx_volume.editable = true
-	else:
-		_audio_master_volume.editable = false
-		_audio_music_volume.editable = false
-		_audio_sfx_volume.editable = false
+func _on_audio_output_device_item_selected(index):
+	var device = _audio_output_device.get_item_text(index)
+	AudioServer.output_device = device
 
 func _on_audio_master_volume_value_changed(value):
-	AudioServer.set_bus_volume_db(_audio_bus_master_idx, value)
-
-func _on_audio_music_volume_value_changed(value):
-	AudioServer.set_bus_volume_db(_audio_bus_music_idx, value)
-
-func _on_audio_sfx_volume_value_changed(value):
-	AudioServer.set_bus_volume_db(_audio_bus_sfx_idx, value)
-
-func _on_audio_device_setup_pressed():
-	add_child(_audio_device_setup.instantiate())
+	AudioServer.set_bus_volume_db(_audio_bus_master, value)
+	
+func _on_display_renderer_method_item_selected(index):
+	var value = DISPLAY_RENDERER_METHODS[index]
+	var last_value = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
+	
+	if value != last_value:
+		ProjectSettings.set_setting("rendering/renderer/rendering_method", value)
+		_warning_restart.show()
 
 func _on_display_window_mode_item_selected(index):
-	DisplayServer.window_set_mode(_display_window_modes[index])
+	var value = DISPLAY_WINDOW_MODES[index]
+	var last_value = DisplayServer.window_get_mode()
+	
+	if value != last_value:
+		DisplayServer.window_set_mode(value)
+		_display_resolution_value.disabled = value > DISPLAY_WINDOW_MODES[0]
+		ProjectSettings.set_setting("display/window/size/mode", value)
 
 func _on_display_vsync_mode_item_selected(index):
-	DisplayServer.window_set_vsync_mode(_display_vsync_modes[index])
+	var value = DISPLAY_VSYNC_MODES[index]
+	var last_value = DisplayServer.window_get_vsync_mode()
+	
+	if value != last_value:
+		DisplayServer.window_set_vsync_mode(value)
+		ProjectSettings.set_setting("display/window/vsync/vsync_mode", value)
 
-func _on_display_scaling_3d_mode_item_selected(index):
-	_display_scaling_3d_scale.select(3 if index > 0 else _display_scaling_3d_scale.selected)
-	_display_scaling_3d_scale.visible = index < 1
-	_display_fsr_sharpness.get_parent().visible = index > 0
-	get_tree().root.scaling_3d_mode = _display_scaling_3d_modes[index]
+func _on_display_resolution_value_item_selected(index):
+	var value = DISPLAY_RESOLUTION_VALUES[index]
+	var last_value = get_tree().root.size
+	
+	if value != last_value:
+		get_tree().root.size = value
+		ProjectSettings.set_setting("display/window/size/viewport_width", value.x)
+		ProjectSettings.set_setting("display/window/size/viewport_height", value.y)
 
-func _on_display_scaling_3d_scale_item_selected(index):
-	get_tree().root.scaling_3d_scale = _display_scaling_3d_scales[index]
+func _on_display_scale_mode_item_selected(index):
+	var value = DISPLAY_SCALE_MODES[index]
+	var last_value = get_tree().root.content_scale_mode
+	
+	if value != last_value:
+		get_tree().root.content_scale_mode = value
+		ProjectSettings.set_setting("display/window/stretch/mode", value)
 
-func _on_display_fsr_sharpness_value_changed(value):
-	get_tree().root.fsr_sharpness = value
+func _on_display_scale_value_item_selected(index):
+	var value = DISPLAY_SCALE_VALUES[index]
+	var last_value = get_tree().root.content_scale_factor
+	
+	if value != last_value:
+		get_tree().root.content_scale_factor = value
+		ProjectSettings.set_setting("display/window/stretch/scale", value)
+
+func _on_display_fov_value_changed(value):
+	var last_value = Global.camera_default_fov
+	
+	if value != last_value:
+		Global.camera_default_fov = value
+		ProjectSettings.set_setting("rendering/camera/field_of_view/value", value)
+
+func _on_display_shadow_value_item_selected(index):
+	var value = DISPLAY_SHADOW_VALUES[index]
+	var last_value = get_tree().root.positional_shadow_atlas_size
+	
+	if value != last_value:
+		get_tree().root.positional_shadow_atlas_size = value
+		ProjectSettings.set_setting("rendering/lights_and_shadows/directional_shadow/size", value)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", value)
+		_warning_restart.show()
 
 func _on_display_msaa_value_item_selected(index):
-	get_tree().root.msaa_3d = _display_msaa_values[index]
+	var value = DISPLAY_MSAA_VALUES[index]
+	var last_value = get_tree().root.msaa_3d
+	
+	if value != last_value:
+		get_tree().root.msaa_3d = value
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", value)
 
-func _on_display_fxaa_value_item_selected(index):
-	get_tree().root.screen_space_aa = _display_fxaa_values[index]
-
-func _on_display_shadow_size_item_selected(index):
-	get_tree().root.positional_shadow_atlas_size = _display_shadow_sizes[index]
-
-func _on_display_benchmark_pressed():
-	_display_confirmation_benchmark.show()
-
-func _on_display_benchmark_confirmed():
-	get_tree().change_scene_to_file("res://demo/benchmark/camera.tscn")
+func _on_display_ssaa_value_item_selected(index):
+	var value = DISPLAY_SSAA_VALUES[index]
+	var last_value = get_tree().root.screen_space_aa
+	
+	if value != last_value:
+		get_tree().root.screen_space_aa = value
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", value)
 
 func _on_input_mouse_sensitivity_value_changed(value):
-	Global.camera_default_sensitivity = value
+	var last_value = Global.camera_default_sensitivity
+	
+	if value != last_value:
+		Global.camera_default_sensitivity = value
+		ProjectSettings.set_setting("input_devices/pointing/camera/sensitivity", value)
 
 func _restore_default_audio_settings():
-	AudioServer.set_bus_mute(_audio_bus_master_idx, false)
-	AudioServer.set_bus_volume_db(_audio_bus_master_idx, 0.0)
-	AudioServer.set_bus_volume_db(_audio_bus_music_idx, -2.0)
-	AudioServer.set_bus_volume_db(_audio_bus_sfx_idx, -2.0)
+	AudioServer.set_bus_volume_db(_audio_bus_master, -4.8)
 	_retrieve_audio_settings() # needed to refresh UI for changes
 
 func _restore_default_display_settings():
-	DisplayServer.window_set_vsync_mode(ProjectSettings.get_setting("display/window/vsync/vsync_mode", DisplayServer.VSYNC_ADAPTIVE))
-	get_tree().root.scaling_3d_mode = ProjectSettings.get_setting("rendering/scaling_3d/mode", _display_scaling_3d_modes[0])
-	get_tree().root.scaling_3d_scale = ProjectSettings.get_setting("rendering/scaling_3d/scale", _display_scaling_3d_scales[3])
-	get_tree().root.fsr_sharpness = ProjectSettings.get_setting("rendering/scaling_3d/fsr_sharpness", 0.2)
-	get_tree().root.msaa_3d = ProjectSettings.get_setting("rendering/anti_aliasing/quality/msaa_3d", _display_msaa_values[0])
-	get_tree().root.screen_space_aa = ProjectSettings.get_setting("rendering/anti_aliasing/quality/screen_space_aa", _display_fxaa_values[0])
-	get_tree().root.positional_shadow_atlas_size = ProjectSettings.get_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", _display_shadow_sizes[2])
+	Global.camera_default_fov = 75.0
+	get_tree().root.positional_shadow_atlas_size = 4096
+	get_tree().root.msaa_3d = Viewport.MSAA_DISABLED
+	get_tree().root.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 	_retrieve_display_settings() # needed to refresh UI for changes
 
 func _restore_default_input_settings():
 	Global.camera_default_sensitivity = 0.25
-	_retrieve_input_settings()
+	_retrieve_input_settings() # needed to refresh UI for changes
 
 func _retrieve_audio_settings():
-	_audio_output_enable.button_pressed = not AudioServer.is_bus_mute(_audio_bus_master_idx)
-	_audio_master_volume.editable = not AudioServer.is_bus_mute(_audio_bus_master_idx)
-	_audio_master_volume.value = AudioServer.get_bus_volume_db(_audio_bus_master_idx)
-	_audio_music_volume.editable = not AudioServer.is_bus_mute(_audio_bus_master_idx)
-	_audio_music_volume.value = AudioServer.get_bus_volume_db(_audio_bus_music_idx)
-	_audio_sfx_volume.editable = not AudioServer.is_bus_mute(_audio_bus_master_idx)
-	_audio_sfx_volume.value = AudioServer.get_bus_volume_db(_audio_bus_sfx_idx)
+	var output_devices = AudioServer.get_output_device_list()
+	
+	for index in len(output_devices):
+		var device = output_devices[index]
+		_audio_output_device.add_item(device, index)
+		
+		if device == AudioServer.output_device:
+			_audio_output_device.select(index)
+	
+	_audio_master_volume.value = AudioServer.get_bus_volume_db(_audio_bus_master)
 
 func _retrieve_display_settings():
-	for i in _display_window_modes.size():
-		if _display_window_modes[i] == DisplayServer.window_get_mode():
-			_display_window_mode.select(i)
-			break
-	for i in _display_vsync_modes.size():
-		if _display_vsync_modes[i] == DisplayServer.window_get_vsync_mode():
-			_display_vsync_mode.select(i)
-			break
-	for i in _display_scaling_3d_modes.size():
-		if _display_scaling_3d_modes[i] == get_tree().root.scaling_3d_mode:
-			_display_scaling_3d_mode.select(i)
-			break
-	for i in _display_scaling_3d_scales.size():
-		if _display_scaling_3d_scales[i] == get_tree().root.scaling_3d_scale:
-			_display_scaling_3d_scale.select(i)
-			break
+	var rendering_method = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
+	var window_mode = DisplayServer.window_get_mode()
+	var vsync_mode = DisplayServer.window_get_vsync_mode()
+	var resolution_value = get_tree().root.size
+	var scale_mode = get_tree().root.content_scale_mode
+	var scale_value = get_tree().root.content_scale_factor
+	var shadow_value = get_tree().root.positional_shadow_atlas_size
+	var msaa_value = get_tree().root.msaa_3d
+	var ssaa_value = get_tree().root.screen_space_aa
 	
-	_display_scaling_3d_scale.visible = _display_scaling_3d_mode.selected < 1
-	_display_fsr_sharpness.get_parent().visible = _display_scaling_3d_mode.selected > 0
-	_display_fsr_sharpness.value = get_tree().root.fsr_sharpness
+	_display_resolution_value.disabled = window_mode > DISPLAY_WINDOW_MODES[0]
+	_display_fov_value.value = Global.camera_default_fov
 	
-	for i in _display_msaa_values.size():
-		if _display_msaa_values[i] == get_tree().root.msaa_3d:
-			_display_msaa_value.select(i)
-			break
-	for i in _display_fxaa_values.size():
-		if _display_fxaa_values[i] == get_tree().root.screen_space_aa:
-			_display_fxaa_value.select(i)
-			break
-	for i in _display_shadow_sizes.size():
-		if _display_shadow_sizes[i] == get_tree().root.positional_shadow_atlas_size:
-			_display_shadow_size.select(i)
-			break
+	if rendering_method == DISPLAY_RENDERER_METHODS[1] or rendering_method == "mobile":
+		_display_renderer_method.select(1)
+	elif rendering_method == DISPLAY_RENDERER_METHODS[0]:
+		_display_renderer_method.select(0)
+	if window_mode == DISPLAY_WINDOW_MODES[0]:
+		_display_window_mode.select(0)
+	elif window_mode == DISPLAY_WINDOW_MODES[1]:
+		_display_window_mode.select(1)
+	elif window_mode == DISPLAY_WINDOW_MODES[2]:
+		_display_window_mode.select(2)
+	if vsync_mode == DISPLAY_VSYNC_MODES[0]:
+		_display_vsync_mode.select(0)
+	elif vsync_mode == DISPLAY_VSYNC_MODES[1]:
+		_display_vsync_mode.select(1)
+	elif vsync_mode == DISPLAY_VSYNC_MODES[2]:
+		_display_vsync_mode.select(2)
+	if resolution_value == DISPLAY_RESOLUTION_VALUES[1]:
+		_display_resolution_value.select(1)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[2]:
+		_display_resolution_value.select(2)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[3]:
+		_display_resolution_value.select(3)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[4]:
+		_display_resolution_value.select(4)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[5]:
+		_display_resolution_value.select(5)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[6]:
+		_display_resolution_value.select(6)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[7]:
+		_display_resolution_value.select(7)
+	elif resolution_value == DISPLAY_RESOLUTION_VALUES[8]:
+		_display_resolution_value.select(8)
+	if scale_mode == DISPLAY_SCALE_MODES[0]:
+		_display_scale_mode.select(0)
+	elif scale_mode == DISPLAY_SCALE_MODES[1]:
+		_display_scale_mode.select(1)
+	if scale_value == DISPLAY_SCALE_VALUES[0]:
+		_display_scale_value.select(0)
+	elif scale_value == DISPLAY_SCALE_VALUES[1]:
+		_display_scale_value.select(1)
+	elif scale_value == DISPLAY_SCALE_VALUES[2]:
+		_display_scale_value.select(2)
+	elif scale_value == DISPLAY_SCALE_VALUES[3]:
+		_display_scale_value.select(3)
+	if shadow_value == DISPLAY_SHADOW_VALUES[0]:
+		_display_shadow_value.select(0)
+	elif shadow_value == DISPLAY_SHADOW_VALUES[1]:
+		_display_shadow_value.select(1)
+	elif shadow_value == DISPLAY_SHADOW_VALUES[2]:
+		_display_shadow_value.select(2)
+	elif shadow_value == DISPLAY_SHADOW_VALUES[3]:
+		_display_shadow_value.select(3)
+	if msaa_value == DISPLAY_MSAA_VALUES[0]:
+		_display_msaa_value.select(0)
+	elif msaa_value == DISPLAY_MSAA_VALUES[1]:
+		_display_msaa_value.select(1)
+	elif msaa_value == DISPLAY_MSAA_VALUES[2]:
+		_display_msaa_value.select(2)
+	elif msaa_value == DISPLAY_MSAA_VALUES[3]:
+		_display_msaa_value.select(3)
+	if ssaa_value == DISPLAY_SSAA_VALUES[0]:
+		_display_ssaa_value.select(0)
+	elif ssaa_value == DISPLAY_SSAA_VALUES[1]:
+		_display_ssaa_value.select(1)
 
 func _retrieve_input_settings():
 	_input_mouse_sensitivity.value = Global.camera_default_sensitivity
@@ -263,6 +342,7 @@ func _on_restart_confirmed():
 	get_tree().quit()
 
 func _on_restore_defaults_confirmed():
+	Settings.restore_defaults()
 	_restore_default_audio_settings()
 	_restore_default_display_settings()
 	_restore_default_input_settings()

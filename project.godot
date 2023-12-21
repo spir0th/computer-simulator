@@ -26,11 +26,13 @@ config/use_custom_user_dir.debug=false
 [audio]
 
 buses/default_bus_layout="res://bus_layout.tres"
+buses/volume/master=-4.8
+devices/output_device=""
 
 [autoload]
 
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 WindowportResizer="*res://addons/windowport_resizer/resizer.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Global="*res://global.gd"
 Settings="*res://settings.gd"
 
@@ -38,6 +40,7 @@ Settings="*res://settings.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2

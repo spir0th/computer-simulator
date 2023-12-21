@@ -1,6 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://ia3ytjghlg1l"]
+[gd_scene load_steps=14 format=3 uid="uid://ia3ytjghlg1l"]
 
 [ext_resource type="Script" path="res://interface/settings.gd" id="1_1et75"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32men"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_dm1i1"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_vt63c"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_j45xi"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_yysej"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_yld46"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_etirq"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_vyy8s"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_0qrh1"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_qf3jq"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_qa6ry"]
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr411"]
 font_size = 10
@@ -85,16 +118,17 @@ layout_mode = 2
 [node name="Output" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
 layout_mode = 2
 
-[node name="Enable" type="CheckBox" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Enable audio"
-flat = true
+text = "Output Device"
+label_settings = SubResource("LabelSettings_32men")
 
-[node name="Device" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
+[node name="Device" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Audio/Output"]
 layout_mode = 2
-horizontal_alignment = 2
-vertical_alignment = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 14
 
 [node name="_" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Audio"]
 layout_mode = 2
@@ -105,80 +139,38 @@ layout_mode = 2
 [node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Master volume"
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_dm1i1")
 
 [node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-min_value = -15.0
+min_value = -30.0
 max_value = 0.0
-step = 0.1
-value = -0.5
-tick_count = 10
-
-[node name="Music" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
-visible = false
-layout_mode = 2
-
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/Music"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Music volume"
-
-[node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/Music"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -15.0
-max_value = 0.0
-step = 0.1
-value = -3.0
-tick_count = 10
-
-[node name="SFX" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
-layout_mode = 2
-
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Audio/SFX"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SFX volume"
-
-[node name="Volume" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Audio/SFX"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -15.0
-max_value = 0.0
-step = 0.1
-value = -3.0
-tick_count = 10
-
-[node name="_2" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Audio"]
-layout_mode = 2
-
-[node name="Buttons" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
-layout_mode = 2
-
-[node name="DeviceSetup" type="Button" parent="Contents/_/_/Options/Scroller/_/Audio/Buttons"]
-layout_mode = 2
-text = "Launch device setup"
 
 [node name="Display" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
 visible = false
 layout_mode = 2
 
-[node name="Graphics" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+[node name="Renderer" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Graphics"]
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Renderer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Renderer"
+label_settings = SubResource("LabelSettings_vt63c")
 
-[node name="MemoryUsage" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Graphics"]
+[node name="Method" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Renderer"]
 layout_mode = 2
-text = "Memory usage:"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 14
+item_count = 2
+selected = 0
+popup/item_0/text = "OpenGL"
+popup/item_0/id = 0
+popup/item_1/text = "Vulkan"
+popup/item_1/id = 1
 
 [node name="_" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
@@ -189,93 +181,173 @@ layout_mode = 2
 [node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Window"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Mode"
+text = "Window Mode"
+label_settings = SubResource("LabelSettings_j45xi")
 
 [node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Window"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 14
+alignment = 1
 item_count = 3
 selected = 0
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "Borderless Fullscreen"
+popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
-popup/item_2/text = "Fullscreen"
+popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 
-[node name="Vsync" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+[node name="VSync" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
 
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Vsync"]
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/VSync"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Vertical Sync"
+text = "VSync"
+label_settings = SubResource("LabelSettings_yysej")
 
-[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Vsync"]
+[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/VSync"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 14
+alignment = 1
 item_count = 3
 selected = 0
-popup/item_0/text = "OFF"
+popup/item_0/text = "Disabled"
 popup/item_0/id = 0
-popup/item_1/text = "ON"
+popup/item_1/text = "Enabled"
 popup/item_1/id = 1
 popup/item_2/text = "Adaptive"
 popup/item_2/id = 2
 
+[node name="_2" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="Resolution" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+label_settings = SubResource("LabelSettings_yld46")
+
+[node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 14
+alignment = 1
+item_count = 9
+selected = 0
+popup/item_0/text = "4:3"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "640x480"
+popup/item_1/id = 1
+popup/item_2/text = "800x600"
+popup/item_2/id = 2
+popup/item_3/text = "1024x768"
+popup/item_3/id = 3
+popup/item_4/text = "16:9"
+popup/item_4/id = 4
+popup/item_4/separator = true
+popup/item_5/text = "960x540"
+popup/item_5/id = 5
+popup/item_6/text = "1280x720"
+popup/item_6/id = 6
+popup/item_7/text = "1366x768"
+popup/item_7/id = 7
+popup/item_8/text = "1920x1080"
+popup/item_8/id = 8
+
+[node name="Scale" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scale"
+label_settings = SubResource("LabelSettings_etirq")
+
+[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 14
+alignment = 1
+item_count = 2
+selected = 1
+popup/item_0/text = "Canvas only"
+popup/item_0/id = 0
+popup/item_1/text = "Viewport"
+popup/item_1/id = 1
+
+[node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 14
+alignment = 1
+item_count = 4
+selected = 0
+popup/item_0/text = "100%"
+popup/item_0/id = 0
+popup/item_1/text = "125%"
+popup/item_1/id = 1
+popup/item_2/text = "150%"
+popup/item_2/id = 2
+popup/item_3/text = "200%"
+popup/item_3/id = 3
+
 [node name="_3" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
 
-[node name="Scaling3D" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+[node name="FOV" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
 
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Scaling3D"]
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/FOV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "3D Scaling"
+text = "Field-Of-View (FOV)"
+label_settings = SubResource("LabelSettings_vyy8s")
 
-[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scaling3D"]
+[node name="Value" type="SpinBox" parent="Contents/_/_/Options/Scroller/_/Display/FOV"]
 layout_mode = 2
-item_count = 3
-selected = 0
-popup/item_0/text = "Bilinear"
-popup/item_0/id = 0
-popup/item_1/text = "FSR 1.0"
-popup/item_1/id = 1
-popup/item_2/text = "FSR 2.0"
-popup/item_2/id = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 120.0
+value = 75.0
+alignment = 1
+suffix = "°"
 
-[node name="Scale" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scaling3D"]
+[node name="Shadow" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Shadows"
+
+[node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+alignment = 1
 item_count = 4
 selected = 0
-popup/item_0/text = "50%"
-popup/item_0/id = 1
-popup/item_1/text = "75%"
-popup/item_1/id = 2
-popup/item_2/text = "95%"
-popup/item_2/id = 3
-popup/item_3/text = "100%"
-popup/item_3/id = 4
-
-[node name="FSR" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
-layout_mode = 2
-
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/FSR"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "FSR Sharpness"
-
-[node name="Sharpness" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Display/FSR"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.1
-value = 0.2
-
-[node name="_4" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
-layout_mode = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
 
 [node name="MSAA" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
@@ -284,87 +356,44 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MSAA"
+label_settings = SubResource("LabelSettings_0qrh1")
 
 [node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/MSAA"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 14
 alignment = 1
 item_count = 4
 selected = 0
-popup/item_0/text = "OFF"
+popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "2X"
+popup/item_1/text = "2x"
 popup/item_1/id = 1
-popup/item_2/text = "4X"
+popup/item_2/text = "4x"
 popup/item_2/id = 2
-popup/item_3/text = "8X"
+popup/item_3/text = "8x"
 popup/item_3/id = 3
 
-[node name="FXAA" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
+[node name="SSAA" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
 
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/FXAA"]
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/SSAA"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "FXAA"
+text = "SSAA"
+label_settings = SubResource("LabelSettings_qf3jq")
 
-[node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/FXAA"]
+[node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/SSAA"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 14
 alignment = 1
 item_count = 2
 selected = 0
-popup/item_0/text = "OFF"
+popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "ON"
+popup/item_1/text = "FXAA"
 popup/item_1/id = 1
-
-[node name="Shadow" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
-layout_mode = 2
-
-[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Shadows"
-
-[node name="Size" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Shadow"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-alignment = 1
-item_count = 5
-selected = 2
-popup/item_0/text = "Low"
-popup/item_0/id = 0
-popup/item_1/text = "Medium"
-popup/item_1/id = 1
-popup/item_2/text = "High"
-popup/item_2/id = 2
-popup/item_3/text = "Very High"
-popup/item_3/id = 3
-popup/item_4/text = "Ultra"
-popup/item_4/id = 4
-
-[node name="_5" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
-layout_mode = 2
-
-[node name="Buttons" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
-layout_mode = 2
-
-[node name="Benchmark" type="Button" parent="Contents/_/_/Options/Scroller/_/Display/Buttons"]
-layout_mode = 2
-text = "Run benchmark test"
-
-[node name="BenchmarkConfirmation" type="ConfirmationDialog" parent="Contents/_/_/Options/Scroller/_/Display"]
-title = "Benchmark Test"
-initial_position = 4
-size = Vector2i(400, 106)
-ok_button_text = "Yes"
-dialog_text = "Do you want to run a benchmark test? All unsaved progress will be lost."
-dialog_autowrap = true
-cancel_button_text = "No"
 
 [node name="Input" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
 visible = false
@@ -377,6 +406,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Mouse sensitivity"
+label_settings = SubResource("LabelSettings_qa6ry")
 
 [node name="Sensitivity" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Input/Mouse"]
 layout_mode = 2
@@ -397,7 +427,6 @@ text = "Not implemented yet!"
 horizontal_alignment = 1
 
 [node name="RestartWarning" type="HBoxContainer" parent="Contents/_/_"]
-visible = false
 layout_mode = 2
 
 [node name="_" type="Label" parent="Contents/_/_/RestartWarning"]
@@ -411,6 +440,16 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Restart Now"
+
+[node name="EditorWarning" type="HBoxContainer" parent="Contents/_/_"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/EditorWarning"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The game is being ran from the editor, note that some options may not be persistent."
+label_settings = SubResource("LabelSettings_vr411")
+vertical_alignment = 1
 
 [node name="RestartConfirmation" type="ConfirmationDialog" parent="."]
 title = "Restart"
@@ -439,21 +478,18 @@ cancel_button_text = "No"
 [connection signal="window_input" from="." to="." method="_on_window_input"]
 [connection signal="tab_changed" from="Contents/_/_/Header/Navigation" to="." method="_on_navigation_tab_changed"]
 [connection signal="pressed" from="Contents/_/_/Header/RestoreDefaults" to="." method="_on_restore_defaults_pressed"]
-[connection signal="toggled" from="Contents/_/_/Options/Scroller/_/Audio/Output/Enable" to="." method="_on_audio_output_enable_toggled"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Audio/Output/Device" to="." method="_on_audio_output_device_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/Master/Volume" to="." method="_on_audio_master_volume_value_changed"]
-[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/Music/Volume" to="." method="_on_audio_music_volume_value_changed"]
-[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Audio/SFX/Volume" to="." method="_on_audio_sfx_volume_value_changed"]
-[connection signal="pressed" from="Contents/_/_/Options/Scroller/_/Audio/Buttons/DeviceSetup" to="." method="_on_audio_device_setup_pressed"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Renderer/Method" to="." method="_on_display_renderer_method_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Window/Mode" to="." method="_on_display_window_mode_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Vsync/Mode" to="." method="_on_display_vsync_mode_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scaling3D/Mode" to="." method="_on_display_scaling_3d_mode_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scaling3D/Scale" to="." method="_on_display_scaling_3d_scale_item_selected"]
-[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/FSR/Sharpness" to="." method="_on_display_fsr_sharpness_value_changed"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/VSync/Mode" to="." method="_on_display_vsync_mode_item_selected"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Resolution/Value" to="." method="_on_display_resolution_value_item_selected"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scale/Mode" to="." method="_on_display_scale_mode_item_selected"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scale/Value" to="." method="_on_display_scale_value_item_selected"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/FOV/Value" to="." method="_on_display_fov_value_changed"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Shadow/Value" to="." method="_on_display_shadow_value_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/MSAA/Value" to="." method="_on_display_msaa_value_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/FXAA/Value" to="." method="_on_display_fxaa_value_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Shadow/Size" to="." method="_on_display_shadow_size_item_selected"]
-[connection signal="pressed" from="Contents/_/_/Options/Scroller/_/Display/Buttons/Benchmark" to="." method="_on_display_benchmark_pressed"]
-[connection signal="confirmed" from="Contents/_/_/Options/Scroller/_/Display/BenchmarkConfirmation" to="." method="_on_display_benchmark_confirmed"]
+[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/SSAA/Value" to="." method="_on_display_ssaa_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity" to="." method="_on_input_mouse_sensitivity_value_changed"]
 [connection signal="pressed" from="Contents/_/_/RestartWarning/Confirm" to="." method="_on_warning_restart_btn_confirm_pressed"]
 [connection signal="confirmed" from="RestartConfirmation" to="." method="_on_restart_confirmed"]
