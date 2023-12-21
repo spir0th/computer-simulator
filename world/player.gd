@@ -3,9 +3,11 @@ extends CharacterBody3D
 @export_category("Player")
 @export var speed = 5.0
 
+var _camera_mouse_input = Vector2.ZERO
 var _camera_mouse_sensitivity = Global.camera_default_sensitivity
 var _camera_fov = Global.camera_default_fov
 var _camera_fov_interpolate = 1.5
+var _camera_smoothness = 1.0 * 30
 var _camera_pitch = 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,26 +25,11 @@ func _enter_tree():
 func _exit_tree():
 	Global.player = null
 
-func _process(_delta):
-	_camera_mouse_sensitivity = Global.camera_default_sensitivity
-	_camera_fov = Global.camera_default_fov
-
 func _input(event):
 	if Global.player != self or not _camera.is_current():
 		return
 	if event is InputEventMouseMotion:
-		var sensitivity = _camera_mouse_sensitivity
-		var mouse_position = event.relative * sensitivity
-		var yaw = mouse_position.x
-		var pitch = mouse_position.y
-		
-		mouse_position = Vector2.ZERO
-		pitch = clamp(pitch, -40 - _camera_pitch, 60 - _camera_pitch)
-		_camera_pitch += pitch
-		
-		_head.rotate_y(deg_to_rad(-yaw))
-		_camera.rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-pitch))
-		_raycast.rotate_object_local(Vector3(1 ,0 ,0), deg_to_rad(-pitch))
+		_camera_mouse_input = event.relative
 	if event.is_action_pressed("player_interact") and _raycast.is_colliding():
 		var object = _raycast.get_collider()
 		
@@ -50,6 +37,29 @@ func _input(event):
 			var interactable = object.get_node("Interactable")
 			interactable.emit_signal("interacted")
 			_prompt.hide()
+
+func _process(delta):
+	if Global.player != self or not _camera.is_current():
+		return
+	
+	# Update camera mouse sensitivity / camera FOV
+	_camera_mouse_sensitivity = Global.camera_default_sensitivity
+	_camera_fov = Global.camera_default_fov
+	
+	# Process camera rotation (both X and Y)
+	_camera_mouse_input = _camera_mouse_input.lerp(_camera_mouse_input * _camera_mouse_sensitivity, delta * _camera_smoothness)
+	
+	var camera_mouse_position = _camera_mouse_input * _camera_mouse_sensitivity
+	var camera_yaw = camera_mouse_position.x
+	var camera_pitch = camera_mouse_position.y
+	
+	camera_mouse_position = Vector2.ZERO
+	camera_pitch = clamp(camera_pitch, -40 - _camera_pitch, 60 - _camera_pitch)
+	_camera_pitch += camera_pitch
+	
+	_head.rotate_y(deg_to_rad(-camera_yaw))
+	_camera.rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-camera_pitch))
+	_raycast.rotate_object_local(Vector3(1 ,0 ,0), deg_to_rad(-camera_pitch))
 
 func _physics_process(delta):
 	if Global.player != self or not _camera.is_current():
