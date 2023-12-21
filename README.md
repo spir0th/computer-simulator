@@ -5,9 +5,8 @@ Computer Simulator not just simulates a bedroom with a computer on it,
 you can also work with your real files in-game!
 
 ## Screenshots
-![screenshot1](https://github.com/spir0th/computer-simulator/assets/66259245/4b2f03cb-a779-4cbe-af5f-d86939bf6efb)
-
-![screenshot2](https://github.com/spir0th/computer-simulator/assets/66259245/42bee352-648e-4557-9e9e-b777d8ca98f5)
+![screenshot_01](https://github.com/spir0th/computer-simulator/assets/66259245/3d0fa5a4-e381-48bc-bc89-a320f1165d92)
+![screenshot_02](https://github.com/spir0th/computer-simulator/assets/66259245/d1b386d1-85b2-488a-b2ad-635573aa7615)
 
 ## Requirements
 Computer Simulator requires at least the minimum system 
