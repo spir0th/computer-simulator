@@ -4,6 +4,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e6uo"]
 albedo_texture = ExtResource("1_d3c45")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jgarq"]
 material = SubResource("StandardMaterial3D_3e6uo")
