@@ -73,7 +73,7 @@ distance_fade_shadow = 5.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, -0.15, 4)
 
 [node name="Bed" parent="Props" instance=ExtResource("1_0bd1p")]
-transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, -3, -1.5, 3)
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -3, -1.5, 3)
 
 [node name="Drawer" parent="Props" instance=ExtResource("3_hbttg")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1, -1.5, 3.1)
