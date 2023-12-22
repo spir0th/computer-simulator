@@ -189,7 +189,6 @@ func _on_display_shadow_value_item_selected(index):
 		get_tree().root.positional_shadow_atlas_size = value
 		ProjectSettings.set_setting("rendering/lights_and_shadows/directional_shadow/size", value)
 		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", value)
-		_warning_restart.show()
 
 func _on_display_msaa_value_item_selected(index):
 	var value = DISPLAY_MSAA_VALUES[index]

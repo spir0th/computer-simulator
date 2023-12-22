@@ -113,7 +113,6 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="Audio" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
-visible = false
 layout_mode = 2
 
 [node name="Output" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Audio"]
@@ -151,6 +150,7 @@ min_value = -30.0
 max_value = 0.0
 
 [node name="Display" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
+visible = false
 layout_mode = 2
 
 [node name="Renderer" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Display"]
