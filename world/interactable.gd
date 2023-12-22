@@ -4,3 +4,6 @@ extends StaticBody3D
 @export var task = "Interact"
 
 signal interacted
+
+func _init():
+	add_to_group("interactable", true)
