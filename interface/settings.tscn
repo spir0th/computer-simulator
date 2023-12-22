@@ -433,7 +433,7 @@ layout_mode = 2
 [node name="_" type="Label" parent="Contents/_/_/EditorWarning"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "The game is being ran from the editor, note that some options may not be persistent."
+text = "The game is being ran from the editor, modified changes may not effect release build(s)."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
 
