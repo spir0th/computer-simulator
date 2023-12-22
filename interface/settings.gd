@@ -82,8 +82,6 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 @onready var _input_mouse_sensitivity = $Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
-@onready var _warning_restart_btn_confirm = $Contents/_/_/RestartWarning/Confirm
-
 @onready var _warning_editor = $Contents/_/_/EditorWarning
 
 @onready var _confirmation_restart = $RestartConfirmation
@@ -318,13 +316,6 @@ func _retrieve_display_settings():
 
 func _retrieve_input_settings():
 	_input_mouse_sensitivity.value = Global.camera_default_sensitivity
-
-func _on_warning_restart_btn_confirm_pressed():
-	_confirmation_restart.show()
-
-func _on_restart_confirmed():
-	OS.set_restart_on_exit(true)
-	get_tree().quit()
 
 func _on_restore_defaults_confirmed():
 	Settings.restore_defaults()

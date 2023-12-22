@@ -427,11 +427,6 @@ text = "There are modified changes that require a restart to take effect."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
 
-[node name="Confirm" type="Button" parent="Contents/_/_/RestartWarning"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Restart Now"
-
 [node name="EditorWarning" type="HBoxContainer" parent="Contents/_/_"]
 layout_mode = 2
 
@@ -441,18 +436,6 @@ size_flags_horizontal = 3
 text = "The game is being ran from the editor, note that some options may not be persistent."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
-
-[node name="RestartConfirmation" type="ConfirmationDialog" parent="."]
-title = "Restart"
-initial_position = 4
-size = Vector2i(300, 150)
-transient = false
-exclusive = false
-always_on_top = true
-ok_button_text = "Yes"
-dialog_text = "Do you want to restart? All unsaved progress will be lost."
-dialog_autowrap = true
-cancel_button_text = "No"
 
 [node name="DefaultsConfirmation" type="ConfirmationDialog" parent="."]
 title = "Restore default settings"
@@ -481,6 +464,4 @@ cancel_button_text = "No"
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/MSAA/Value" to="." method="_on_display_msaa_value_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/SSAA/Value" to="." method="_on_display_ssaa_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity" to="." method="_on_input_mouse_sensitivity_value_changed"]
-[connection signal="pressed" from="Contents/_/_/RestartWarning/Confirm" to="." method="_on_warning_restart_btn_confirm_pressed"]
-[connection signal="confirmed" from="RestartConfirmation" to="." method="_on_restart_confirmed"]
 [connection signal="confirmed" from="DefaultsConfirmation" to="." method="_on_restore_defaults_confirmed"]
