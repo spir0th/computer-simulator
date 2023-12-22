@@ -97,7 +97,7 @@ func _physics_process(delta):
 	if _raycast.is_colliding():
 		var object = _raycast.get_collider()
 		
-		if object.is_in_group("interactable") and velocity.length() < 1:
+		if object.is_in_group("interactable"):
 			_prompt.action = object.action
 			_prompt.task = object.task
 			_prompt.show()
