@@ -428,16 +428,6 @@ text = "There are modified changes that require a restart to take effect."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
 
-[node name="EditorWarning" type="HBoxContainer" parent="Contents/_/_"]
-layout_mode = 2
-
-[node name="_" type="Label" parent="Contents/_/_/EditorWarning"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "The game is being ran from the editor, modified changes may not effect release build(s)."
-label_settings = SubResource("LabelSettings_vr411")
-vertical_alignment = 1
-
 [node name="DefaultsConfirmation" type="ConfirmationDialog" parent="."]
 title = "Restore default settings"
 initial_position = 4

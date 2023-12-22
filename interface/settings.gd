@@ -82,7 +82,6 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 @onready var _input_mouse_sensitivity = $Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
-@onready var _warning_editor = $Contents/_/_/EditorWarning
 
 @onready var _confirmation_defaults = $DefaultsConfirmation
 
@@ -91,10 +90,6 @@ func _ready():
 	_retrieve_display_settings()
 	_retrieve_input_settings()
 	_warning_restart.hide()
-	_warning_editor.hide()
-	
-	if OS.has_meta("editor"):
-		_warning_editor.show()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
