@@ -211,11 +211,18 @@ func _on_input_mouse_sensitivity_value_changed(value):
 		ProjectSettings.set_setting("input_devices/pointing/camera/sensitivity", value)
 
 func _restore_default_audio_settings():
-	AudioServer.set_bus_volume_db(_audio_bus_master, -4.8)
+	AudioServer.output_device = "default"
+	AudioServer.set_bus_volume_db(_audio_bus_master, -10.0)
 	_retrieve_audio_settings() # needed to refresh UI for changes
 
 func _restore_default_display_settings():
+	if DisplayServer.window_get_mode() < DisplayServer.WINDOW_MODE_FULLSCREEN:
+		# If the window mode is Windowed (even minimized/maximized), we can
+		# also set the viewport resolution back to it's default value
+		get_tree().root.size = Vector2i(1280, 720)
+	
 	Global.camera_default_fov = 75.0
+	get_tree().root.scaling_3d_scale = 1.0
 	get_tree().root.positional_shadow_atlas_size = 4096
 	get_tree().root.msaa_3d = Viewport.MSAA_DISABLED
 	get_tree().root.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
