@@ -152,10 +152,10 @@ func _on_display_vsync_mode_item_selected(index):
 
 func _on_display_resolution_value_item_selected(index):
 	var value = DISPLAY_RESOLUTION_VALUES[index]
-	var last_value = get_tree().root.size
+	var last_value = DisplayServer.window_get_size()
 	
 	if value != last_value:
-		get_tree().root.size = value
+		DisplayServer.window_set_size(value)
 		ProjectSettings.set_setting("display/window/size/viewport_width", value.x)
 		ProjectSettings.set_setting("display/window/size/viewport_height", value.y)
 
@@ -218,8 +218,8 @@ func _restore_default_audio_settings():
 func _restore_default_display_settings():
 	if DisplayServer.window_get_mode() < DisplayServer.WINDOW_MODE_FULLSCREEN:
 		# If the window mode is Windowed (even minimized/maximized), we can
-		# also set the viewport resolution back to it's default value
-		get_tree().root.size = Vector2i(1280, 720)
+		# also set the window resolution back to it's default value
+		DisplayServer.window_set_size(Vector2i(1280, 720))
 	
 	Global.camera_default_fov = 75.0
 	get_tree().root.scaling_3d_scale = 1.0
@@ -248,7 +248,7 @@ func _retrieve_display_settings():
 	var rendering_method = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
 	var window_mode = DisplayServer.window_get_mode()
 	var vsync_mode = DisplayServer.window_get_vsync_mode()
-	var resolution_value = get_tree().root.size
+	var resolution_value = DisplayServer.window_get_size()
 	var scale_value = get_tree().root.scaling_3d_scale
 	var shadow_value = get_tree().root.positional_shadow_atlas_size
 	var msaa_value = get_tree().root.msaa_3d
