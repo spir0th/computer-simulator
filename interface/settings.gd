@@ -122,34 +122,36 @@ func _on_restore_defaults_pressed():
 func _on_audio_output_device_item_selected(index):
 	var device = _audio_output_device.get_item_text(index)
 	AudioServer.output_device = device
+	ProjectSettings.set_setting("audio/devices/output_device", device)
 
 func _on_audio_master_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(_audio_bus_master, value)
+	ProjectSettings.set_setting("audio/buses/volume/master", value)
 
 func _on_display_renderer_method_item_selected(index):
-	var value = DISPLAY_RENDERER_METHODS[index]
-	var last_value = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
+	var method = DISPLAY_RENDERER_METHODS[index]
+	var last_method = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
 	
-	if value != last_value:
-		ProjectSettings.set_setting("rendering/renderer/rendering_method", value)
+	if method != last_method:
+		ProjectSettings.set_setting("rendering/renderer/rendering_method", method)
 		_warning_restart.show()
 
 func _on_display_window_mode_item_selected(index):
-	var value = DISPLAY_WINDOW_MODES[index]
-	var last_value = DisplayServer.window_get_mode()
+	var mode = DISPLAY_WINDOW_MODES[index]
+	var last_mode = DisplayServer.window_get_mode()
 	
-	if value != last_value:
-		DisplayServer.window_set_mode(value)
-		_display_resolution_value.disabled = value > DISPLAY_WINDOW_MODES[0]
-		ProjectSettings.set_setting("display/window/size/mode", value)
+	if mode != last_mode:
+		DisplayServer.window_set_mode(mode)
+		_display_resolution_value.disabled = mode > DISPLAY_WINDOW_MODES[0]
+		ProjectSettings.set_setting("display/window/size/mode", mode)
 
 func _on_display_vsync_mode_item_selected(index):
-	var value = DISPLAY_VSYNC_MODES[index]
-	var last_value = DisplayServer.window_get_vsync_mode()
+	var mode = DISPLAY_VSYNC_MODES[index]
+	var last_mode = DisplayServer.window_get_vsync_mode()
 	
-	if value != last_value:
-		DisplayServer.window_set_vsync_mode(value)
-		ProjectSettings.set_setting("display/window/vsync/vsync_mode", value)
+	if mode != last_mode:
+		DisplayServer.window_set_vsync_mode(mode)
+		ProjectSettings.set_setting("display/window/vsync/vsync_mode", mode)
 
 func _on_display_resolution_value_item_selected(index):
 	var value = DISPLAY_RESOLUTION_VALUES[index]
