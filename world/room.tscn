@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dv6ymodk4we22"]
 
 [ext_resource type="PackedScene" uid="uid://dwfg5m3hs018p" path="res://world/bed.tscn" id="1_0bd1p"]
-[ext_resource type="Texture2D" uid="uid://btdqmtdj1elc1" path="res://world/room.png" id="1_nqocp"]
+[ext_resource type="Texture2D" uid="uid://cp472d10a4tql" path="res://world/room.png" id="1_nqocp"]
 [ext_resource type="PackedScene" uid="uid://rq6fchohpijm" path="res://world/floor.tscn" id="1_sh7x6"]
 [ext_resource type="PackedScene" uid="uid://bdqjr2uimw5a1" path="res://world/window.tscn" id="1_t6ewt"]
 [ext_resource type="PackedScene" uid="uid://b15q14vrm5nrb" path="res://world/drawer.tscn" id="3_hbttg"]

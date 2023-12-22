@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://np7f3tdafhsd"]
 
 [ext_resource type="Script" path="res://splash/branding.gd" id="1_0yuei"]
-[ext_resource type="Texture2D" uid="uid://cx7gdxa7jenaq" path="res://splash/beanie.png" id="1_mi6e5"]
+[ext_resource type="Texture2D" uid="uid://bcl5cj4axnpbs" path="res://splash/beanie.png" id="1_mi6e5"]
 
 [sub_resource type="Animation" id="Animation_b0883"]
 resource_name = "branding-start"

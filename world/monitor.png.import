@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmxsfxeux5md4"
-path.bptc="res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.bptc.ctex"
-path.astc="res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.astc.ctex"
+uid="uid://bfdrhji3cxsfn"
+path.s3tc="res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.s3tc.ctex"
+path.etc2="res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,19 +13,19 @@ metadata={
 [deps]
 
 source_file="res://world/monitor.png"
-dest_files=["res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.bptc.ctex", "res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.astc.ctex"]
+dest_files=["res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.s3tc.ctex", "res://.godot/imported/monitor.png-522bbb2aebc8dc1d28f3465a18a2a186.etc2.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=0
-compress/normal_map=2
-compress/channel_pack=1
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
