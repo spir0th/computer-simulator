@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bi1ibn404ftcq"]
 
 [ext_resource type="Script" path="res://world/switch.gd" id="1_ccet3"]
-[ext_resource type="AudioStream" uid="uid://danuvnmjdwct6" path="res://world/light_on.mp3" id="3_gnfyi"]
-[ext_resource type="AudioStream" uid="uid://c1xgiyorpsogb" path="res://world/light_off.mp3" id="4_c5osg"]
+[ext_resource type="AudioStream" uid="uid://nyf0vimdoavq" path="res://world/light_on.mp3" id="3_gnfyi"]
+[ext_resource type="AudioStream" uid="uid://dbbiwij0iqv41" path="res://world/light_off.mp3" id="4_c5osg"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ulqlt"]
 points = PackedVector3Array(0.0773898, 0.156255, -0.0404508, -0.141625, -0.223313, -0.0112344, 0.150414, -0.237951, -0.00394, -0.13955, 0.214677, 0.0232, 0.141014, 0.214677, 0.0232, -0.13955, -0.223277, 0.0232, -0.075897, 0.156255, -0.0404508, 0.141014, -0.223277, 0.0232, 0.150414, 0.229351, -0.00394, 0.0773898, -0.150263, -0.0258426, -0.141625, 0.214713, -0.0112344, -0.0832229, -0.150263, -0.0258426, 0.0773898, 0.119798, -0.0404508, 0.135792, -0.223313, -0.0112409, -0.075897, 0.119798, -0.0404508)
@@ -137,7 +137,7 @@ _data = {
 }
 
 [node name="Switch" type="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(3.61999e-06, 9.17733e-12, 1, 2.53518e-06, -1, 0, 1, 2.53518e-06, -3.61999e-06, 0, 0, 0)
 script = ExtResource("1_ccet3")
 task = "Toggle lights"
 
@@ -148,9 +148,9 @@ shape = SubResource("ConvexPolygonShape3D_ulqlt")
 mesh = SubResource("ArrayMesh_2sbxr")
 
 [node name="Switcher" type="AudioStreamPlayer3D" parent="."]
+volume_db = -20.0
 
-[node name="Animator" type="AnimationPlayer" parent="Switcher"]
-root_node = NodePath("../..")
+[node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mco25")
 }

@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpst4jrqg25d1"]
+[gd_scene load_steps=14 format=3 uid="uid://cpst4jrqg25d1"]
 
 [ext_resource type="Script" path="res://world/player.gd" id="1_4jhf5"]
-[ext_resource type="AudioStream" uid="uid://clrup20h8afnm" path="res://world/foot.mp3" id="2_kduoy"]
+[ext_resource type="AudioStream" uid="uid://bhugh8xxo6t7d" path="res://world/foot.mp3" id="2_kduoy"]
 [ext_resource type="PackedScene" uid="uid://5pfnn0dl51ar" path="res://interface/player/prompt.tscn" id="2_oo66v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m713c"]
 height = 2.5
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_hr2lb"]
 
 [sub_resource type="Animation" id="Animation_0wp7w"]
 resource_name = "idle"
@@ -103,6 +105,8 @@ target_position = Vector3(0, 0, -1.5)
 [node name="Prompt" parent="Head" instance=ExtResource("2_oo66v")]
 
 [node name="_" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_hr2lb")
+volume_db = -20.0
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
@@ -113,9 +117,6 @@ libraries = {
 [node name="Tree" type="AnimationTree" parent="Animator"]
 root_node = NodePath("../..")
 callback_mode_process = 0
-libraries = {
-"": SubResource("AnimationLibrary_ljtay")
-}
 tree_root = SubResource("AnimationNodeStateMachine_fti50")
 anim_player = NodePath("..")
-parameters/movement/blend_position = -0.0649966
+parameters/movement/blend_position = -0.00225225
