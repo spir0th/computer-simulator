@@ -428,6 +428,17 @@ text = "There are modified changes that require a restart to take effect."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
 
+[node name="RestartSceneConfirmation" type="ConfirmationDialog" parent="."]
+title = "Notice"
+initial_position = 4
+size = Vector2i(410, 184)
+ok_button_text = "Restart"
+dialog_text = "You have modified changes that requires a QUICK RESTART.
+
+It is recommended to do it now to avoid unexpected errors, such as rendering issues."
+dialog_autowrap = true
+cancel_button_text = "Later"
+
 [node name="DefaultsConfirmation" type="ConfirmationDialog" parent="."]
 title = "Restore default settings"
 initial_position = 4
@@ -455,4 +466,5 @@ cancel_button_text = "No"
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/MSAA/Value" to="." method="_on_display_msaa_value_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/SSAA/Value" to="." method="_on_display_ssaa_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity" to="." method="_on_input_mouse_sensitivity_value_changed"]
+[connection signal="confirmed" from="RestartSceneConfirmation" to="." method="_on_restart_scene_confirmed"]
 [connection signal="confirmed" from="DefaultsConfirmation" to="." method="_on_restore_defaults_confirmed"]
