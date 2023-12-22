@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6v0ejnxpwqrx"]
+[gd_scene load_steps=11 format=3 uid="uid://c6v0ejnxpwqrx"]
 
 [ext_resource type="Script" path="res://world/monitor.gd" id="1_1ubp4"]
-[ext_resource type="PackedScene" uid="uid://b4j5mvmwd1xug" path="res://world/interactable.tscn" id="1_yaepk"]
 [ext_resource type="Texture2D" uid="uid://dmxsfxeux5md4" path="res://world/monitor.png" id="3_pa1cv"]
 [ext_resource type="PackedScene" uid="uid://cgocvvompnun8" path="res://interface/computer/screen.tscn" id="3_tgxcp"]
 
@@ -87,8 +86,6 @@ orientation = 2
 [node name="Monitor" type="StaticBody3D"]
 process_mode = 3
 script = ExtResource("1_1ubp4")
-
-[node name="Interactable" parent="." instance=ExtResource("1_yaepk")]
 task = "Use computer"
 
 [node name="Interface" parent="." instance=ExtResource("3_tgxcp")]
@@ -104,4 +101,4 @@ skeleton = NodePath("")
 transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.74228e-08, 0.139173, -0.990268, -0.195001, 0.17565, 0.0495199)
 mesh = SubResource("PlaneMesh_iepps")
 
-[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]

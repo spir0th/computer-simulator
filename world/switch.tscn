@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bi1ibn404ftcq"]
+[gd_scene load_steps=12 format=3 uid="uid://bi1ibn404ftcq"]
 
 [ext_resource type="Script" path="res://world/switch.gd" id="1_ccet3"]
-[ext_resource type="PackedScene" uid="uid://b4j5mvmwd1xug" path="res://world/interactable.tscn" id="1_wp1t1"]
 [ext_resource type="AudioStream" uid="uid://danuvnmjdwct6" path="res://world/light_on.mp3" id="3_gnfyi"]
 [ext_resource type="AudioStream" uid="uid://c1xgiyorpsogb" path="res://world/light_off.mp3" id="4_c5osg"]
 
@@ -140,8 +139,6 @@ _data = {
 [node name="Switch" type="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ccet3")
-
-[node name="Interactable" parent="." instance=ExtResource("1_wp1t1")]
 task = "Toggle lights"
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -151,7 +148,6 @@ shape = SubResource("ConvexPolygonShape3D_ulqlt")
 mesh = SubResource("ArrayMesh_2sbxr")
 
 [node name="Switcher" type="AudioStreamPlayer3D" parent="."]
-bus = &"SFX"
 
 [node name="Animator" type="AnimationPlayer" parent="Switcher"]
 root_node = NodePath("../..")
@@ -159,4 +155,4 @@ libraries = {
 "": SubResource("AnimationLibrary_mco25")
 }
 
-[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]

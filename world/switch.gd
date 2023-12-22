@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends "res://world/interactable.gd"
 
 @export var _sun: DirectionalLight3D
 @export var _light: OmniLight3D
@@ -16,4 +16,3 @@ func _on_interacted():
 		_switcher_animator.play("off")
 		_sun.light_energy = 1.0
 		_light.omni_range = 0.0
-	

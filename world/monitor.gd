@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends "res://world/interactable.gd"
 
 @onready var _interface = $Interface
 
