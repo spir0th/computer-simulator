@@ -84,7 +84,6 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 @onready var _warning_restart = $Contents/_/_/RestartWarning
 @onready var _warning_editor = $Contents/_/_/EditorWarning
 
-@onready var _confirmation_restart = $RestartConfirmation
 @onready var _confirmation_defaults = $DefaultsConfirmation
 
 func _ready():
