@@ -30,11 +30,9 @@ const DISPLAY_RESOLUTION_VALUES = [
 	Vector2i(1366, 768), # 1366x768 (16:9)
 	Vector2i(1920, 1080), # 1920x1080 (16:9)
 ]
-const DISPLAY_SCALE_MODES = [
-	Window.CONTENT_SCALE_MODE_CANVAS_ITEMS,
-	Window.CONTENT_SCALE_MODE_VIEWPORT
-]
 const DISPLAY_SCALE_VALUES = [
+	0.5, # 50%
+	0.8, # 75%
 	1.0, # 100%
 	1.2, # 125%
 	1.5, # 150%
@@ -75,7 +73,6 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 @onready var _display_window_mode = $Contents/_/_/Options/Scroller/_/Display/Window/Mode
 @onready var _display_vsync_mode = $Contents/_/_/Options/Scroller/_/Display/VSync/Mode
 @onready var _display_resolution_value = $Contents/_/_/Options/Scroller/_/Display/Resolution/Value
-@onready var _display_scale_mode = $Contents/_/_/Options/Scroller/_/Display/Scale/Mode
 @onready var _display_scale_value = $Contents/_/_/Options/Scroller/_/Display/Scale/Value
 @onready var _display_fov_value = $Contents/_/_/Options/Scroller/_/Display/FOV/Value
 @onready var _display_shadow_value = $Contents/_/_/Options/Scroller/_/Display/Shadow/Value
@@ -169,21 +166,13 @@ func _on_display_resolution_value_item_selected(index):
 		ProjectSettings.set_setting("display/window/size/viewport_width", value.x)
 		ProjectSettings.set_setting("display/window/size/viewport_height", value.y)
 
-func _on_display_scale_mode_item_selected(index):
-	var value = DISPLAY_SCALE_MODES[index]
-	var last_value = get_tree().root.content_scale_mode
-	
-	if value != last_value:
-		get_tree().root.content_scale_mode = value
-		ProjectSettings.set_setting("display/window/stretch/mode", value)
-
 func _on_display_scale_value_item_selected(index):
 	var value = DISPLAY_SCALE_VALUES[index]
-	var last_value = get_tree().root.content_scale_factor
+	var last_value = get_tree().root.scaling_3d_scale
 	
 	if value != last_value:
-		get_tree().root.content_scale_factor = value
-		ProjectSettings.set_setting("display/window/stretch/scale", value)
+		get_tree().root.scaling_3d_scale = value
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", value)
 
 func _on_display_fov_value_changed(value):
 	var last_value = Global.camera_default_fov
@@ -257,8 +246,7 @@ func _retrieve_display_settings():
 	var window_mode = DisplayServer.window_get_mode()
 	var vsync_mode = DisplayServer.window_get_vsync_mode()
 	var resolution_value = get_tree().root.size
-	var scale_mode = get_tree().root.content_scale_mode
-	var scale_value = get_tree().root.content_scale_factor
+	var scale_value = get_tree().root.scaling_3d_scale
 	var shadow_value = get_tree().root.positional_shadow_atlas_size
 	var msaa_value = get_tree().root.msaa_3d
 	var ssaa_value = get_tree().root.screen_space_aa
@@ -298,10 +286,6 @@ func _retrieve_display_settings():
 		_display_resolution_value.select(7)
 	elif resolution_value == DISPLAY_RESOLUTION_VALUES[8]:
 		_display_resolution_value.select(8)
-	if scale_mode == DISPLAY_SCALE_MODES[0]:
-		_display_scale_mode.select(0)
-	elif scale_mode == DISPLAY_SCALE_MODES[1]:
-		_display_scale_mode.select(1)
 	if scale_value == DISPLAY_SCALE_VALUES[0]:
 		_display_scale_value.select(0)
 	elif scale_value == DISPLAY_SCALE_VALUES[1]:
@@ -310,6 +294,10 @@ func _retrieve_display_settings():
 		_display_scale_value.select(2)
 	elif scale_value == DISPLAY_SCALE_VALUES[3]:
 		_display_scale_value.select(3)
+	elif scale_value == DISPLAY_SCALE_VALUES[4]:
+		_display_scale_value.select(4)
+	elif scale_value == DISPLAY_SCALE_VALUES[5]:
+		_display_scale_value.select(5)
 	if shadow_value == DISPLAY_SHADOW_VALUES[0]:
 		_display_shadow_value.select(0)
 	elif shadow_value == DISPLAY_SHADOW_VALUES[1]:

@@ -273,35 +273,26 @@ size_flags_horizontal = 3
 text = "Scale"
 label_settings = SubResource("LabelSettings_etirq")
 
-[node name="Mode" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scale"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-theme_override_font_sizes/font_size = 14
-alignment = 1
-item_count = 2
-selected = 1
-popup/item_0/text = "Canvas only"
-popup/item_0/id = 0
-popup/item_1/text = "Viewport"
-popup/item_1/id = 1
-
 [node name="Value" type="OptionButton" parent="Contents/_/_/Options/Scroller/_/Display/Scale"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme_override_font_sizes/font_size = 14
 alignment = 1
-item_count = 4
-selected = 0
-popup/item_0/text = "100%"
+item_count = 6
+selected = 2
+popup/item_0/text = "50%"
 popup/item_0/id = 0
-popup/item_1/text = "125%"
+popup/item_1/text = "75%"
 popup/item_1/id = 1
-popup/item_2/text = "150%"
+popup/item_2/text = "100%"
 popup/item_2/id = 2
-popup/item_3/text = "200%"
+popup/item_3/text = "125%"
 popup/item_3/id = 3
+popup/item_4/text = "150%"
+popup/item_4/id = 4
+popup/item_5/text = "200%"
+popup/item_5/id = 5
 
 [node name="_3" type="HSeparator" parent="Contents/_/_/Options/Scroller/_/Display"]
 layout_mode = 2
@@ -484,7 +475,6 @@ cancel_button_text = "No"
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Window/Mode" to="." method="_on_display_window_mode_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/VSync/Mode" to="." method="_on_display_vsync_mode_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Resolution/Value" to="." method="_on_display_resolution_value_item_selected"]
-[connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scale/Mode" to="." method="_on_display_scale_mode_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Scale/Value" to="." method="_on_display_scale_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Display/FOV/Value" to="." method="_on_display_fov_value_changed"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/Shadow/Value" to="." method="_on_display_shadow_value_item_selected"]
