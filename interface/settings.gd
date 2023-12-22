@@ -80,6 +80,7 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 @onready var _display_ssaa_value = $Contents/_/_/Options/Scroller/_/Display/SSAA/Value
 
 @onready var _input_mouse_sensitivity = $Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity
+@onready var _input_camera_smoothness = $Contents/_/_/Options/Scroller/_/Input/Camera/Smoothness
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
 
@@ -210,6 +211,13 @@ func _on_input_mouse_sensitivity_value_changed(value):
 		Global.camera_default_sensitivity = value
 		ProjectSettings.set_setting("input_devices/pointing/camera/sensitivity", value)
 
+func _on_input_camera_smoothness_value_changed(value):
+	var last_value = Global.camera_default_smoothness
+	
+	if value != last_value:
+		Global.camera_default_smoothness = value
+		ProjectSettings.set_setting("input_devices/pointing/camera/smoothness", value)
+
 func _restore_default_audio_settings():
 	AudioServer.output_device = "default"
 	AudioServer.set_bus_volume_db(_audio_bus_master, -10.0)
@@ -230,6 +238,7 @@ func _restore_default_display_settings():
 
 func _restore_default_input_settings():
 	Global.camera_default_sensitivity = 0.25
+	Global.camera_default_smoothness = 30
 	_retrieve_input_settings() # needed to refresh UI for changes
 
 func _retrieve_audio_settings():
@@ -323,6 +332,7 @@ func _retrieve_display_settings():
 
 func _retrieve_input_settings():
 	_input_mouse_sensitivity.value = Global.camera_default_sensitivity
+	_input_camera_smoothness.value = Global.camera_default_smoothness
 
 func _on_restart_scene_confirmed():
 	get_tree().reload_current_scene()

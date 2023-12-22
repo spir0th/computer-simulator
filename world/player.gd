@@ -5,9 +5,9 @@ extends CharacterBody3D
 
 var _camera_mouse_input = Vector2.ZERO
 var _camera_mouse_sensitivity = Global.camera_default_sensitivity
+var _camera_smoothness = Global.camera_default_smoothness
 var _camera_fov = Global.camera_default_fov
 var _camera_fov_interpolate = 1.5
-var _camera_smoothness = 1.0 * 30
 var _camera_pitch = 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -41,8 +41,9 @@ func _process(delta):
 	if Global.player != self or not _camera.is_current():
 		return
 	
-	# Update camera mouse sensitivity / camera FOV
+	# Update camera properties
 	_camera_mouse_sensitivity = Global.camera_default_sensitivity
+	_camera_smoothness = Global.camera_default_smoothness
 	_camera_fov = Global.camera_default_fov
 	
 	# Process camera rotation (both X and Y)

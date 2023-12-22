@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ia3ytjghlg1l"]
+[gd_scene load_steps=15 format=3 uid="uid://ia3ytjghlg1l"]
 
 [ext_resource type="Script" path="res://interface/settings.gd" id="1_1et75"]
 
@@ -33,6 +33,9 @@ font_size = 14
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_qa6ry"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbs5n"]
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr411"]
@@ -409,6 +412,24 @@ max_value = 0.5
 step = 0.01
 value = 0.25
 
+[node name="Camera" type="HBoxContainer" parent="Contents/_/_/Options/Scroller/_/Input"]
+layout_mode = 2
+
+[node name="_" type="Label" parent="Contents/_/_/Options/Scroller/_/Input/Camera"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera smoothness"
+label_settings = SubResource("LabelSettings_cbs5n")
+
+[node name="Smoothness" type="HSlider" parent="Contents/_/_/Options/Scroller/_/Input/Camera"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+max_value = 50.0
+step = 10.0
+value = 30.0
+
 [node name="Language" type="VBoxContainer" parent="Contents/_/_/Options/Scroller/_"]
 visible = false
 layout_mode = 2
@@ -466,5 +487,6 @@ cancel_button_text = "No"
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/MSAA/Value" to="." method="_on_display_msaa_value_item_selected"]
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/SSAA/Value" to="." method="_on_display_ssaa_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity" to="." method="_on_input_mouse_sensitivity_value_changed"]
+[connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Camera/Smoothness" to="." method="_on_input_camera_smoothness_value_changed"]
 [connection signal="confirmed" from="RestartSceneConfirmation" to="." method="_on_restart_scene_confirmed"]
 [connection signal="confirmed" from="DefaultsConfirmation" to="." method="_on_restore_defaults_confirmed"]
