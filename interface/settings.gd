@@ -128,7 +128,7 @@ func _on_audio_output_device_item_selected(index):
 
 func _on_audio_master_volume_value_changed(value):
 	AudioServer.set_bus_volume_db(_audio_bus_master, value)
-	
+
 func _on_display_renderer_method_item_selected(index):
 	var value = DISPLAY_RENDERER_METHODS[index]
 	var last_value = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")

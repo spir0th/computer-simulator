@@ -26,7 +26,7 @@ config/use_custom_user_dir.debug=false
 [audio]
 
 buses/default_bus_layout="res://bus_layout.tres"
-buses/volume/master=-4.8
+buses/volume/master=-10.0
 devices/output_device="default"
 
 [autoload]
