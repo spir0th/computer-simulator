@@ -1,4 +1,4 @@
-extends Control
+extends Node3D
 
 func _ready():
 	# Make sure the game is not frozen.

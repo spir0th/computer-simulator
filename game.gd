@@ -1,4 +1,4 @@
-extends Control
+extends Node3D
 
 @onready var _pause_menu = $Menu
 

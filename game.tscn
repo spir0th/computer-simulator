@@ -4,20 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dv6ymodk4we22" path="res://world/room.tscn" id="1_w5nfb"]
 [ext_resource type="PackedScene" uid="uid://lhvfbwbbghvk" path="res://interface/menu.tscn" id="3_r4ncf"]
 
-[node name="Game" type="Control"]
+[node name="Game" type="Node3D"]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_f35v6")
 
 [node name="Room" parent="." instance=ExtResource("1_w5nfb")]
 
 [node name="Menu" parent="." instance=ExtResource("3_r4ncf")]
-layout_mode = 1
 mouse_filter = 1
 type = 1
 
