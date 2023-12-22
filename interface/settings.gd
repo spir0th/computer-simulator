@@ -276,8 +276,6 @@ func _retrieve_display_settings():
 		_display_resolution_value.select(2)
 	elif resolution_value == DISPLAY_RESOLUTION_VALUES[3]:
 		_display_resolution_value.select(3)
-	elif resolution_value == DISPLAY_RESOLUTION_VALUES[4]:
-		_display_resolution_value.select(4)
 	elif resolution_value == DISPLAY_RESOLUTION_VALUES[5]:
 		_display_resolution_value.select(5)
 	elif resolution_value == DISPLAY_RESOLUTION_VALUES[6]:
