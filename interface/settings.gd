@@ -256,6 +256,7 @@ func _retrieve_display_settings():
 	
 	_display_resolution_value.disabled = window_mode > DISPLAY_WINDOW_MODES[0]
 	_display_fov_value.value = Global.camera_default_fov
+	_display_shadow_value.set_item_disabled(0, Global.player != null)
 	
 	if rendering_method == DISPLAY_RENDERER_METHODS[1] or rendering_method == "mobile":
 		_display_renderer_method.select(1)
