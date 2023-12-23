@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://lhvfbwbbghvk"]
+[gd_scene load_steps=9 format=3 uid="uid://lhvfbwbbghvk"]
 
 [ext_resource type="Script" path="res://interface/menu.gd" id="1_3osww"]
+[ext_resource type="FontFile" uid="uid://dqmqqdlp0y4q5" path="res://fonts/RobotoMono-Bold.ttf" id="2_cybwm"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_2or6o"]
+[sub_resource type="LabelSettings" id="LabelSettings_50to8"]
+font = ExtResource("2_cybwm")
 font_size = 64
 
 [sub_resource type="Animation" id="Animation_p6low"]
@@ -116,36 +118,49 @@ alignment = 1
 
 [node name="Title" type="Label" parent="Content/_/_"]
 layout_mode = 2
-text = "Game Title"
-label_settings = SubResource("LabelSettings_2or6o")
+text = "Godot Engine"
+label_settings = SubResource("LabelSettings_50to8")
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="Content/_/_"]
+layout_mode = 2
+text = "Version 4.3-dev1"
+vertical_alignment = 1
 
 [node name="Navigation" type="HBoxContainer" parent="Content/_"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Start" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Start"
+flat = true
 
 [node name="Resume" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Resume"
+flat = true
 
 [node name="Options" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Options"
+flat = true
 
 [node name="Help" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Help
 "
+flat = true
 
 [node name="MainMenu" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Main Menu"
+flat = true
 
 [node name="Quit" type="Button" parent="Content/_/Navigation"]
 layout_mode = 2
 text = "Quit"
+flat = true
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Background")

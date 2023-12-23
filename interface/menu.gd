@@ -15,6 +15,7 @@ var _settings = preload("res://interface/settings.tscn")
 @onready var _background = $Background
 
 @onready var _content_title = $Content/_/_/Title
+@onready var _content_version = $Content/_/_/Version
 @onready var _content_navigation = $Content/_/Navigation
 @onready var _content_navigation_btn_start = $Content/_/Navigation/Start
 @onready var _content_navigation_btn_resume = $Content/_/Navigation/Resume
@@ -29,7 +30,7 @@ var _settings = preload("res://interface/settings.tscn")
 @onready var _confirmation_quit = $QuitConfirmation
 
 func _ready():
-	_update_title()
+	_update_game_info()
 	_update_buttons()
 	
 	if type == MenuType.MAIN:
@@ -108,8 +109,9 @@ func _pause_end():
 	await _animator.animation_finished
 	_content_navigation_btn_resume.release_focus()
 
-func _update_title():
+func _update_game_info():
 	_content_title.text = Global.application_name
+	_content_version.text = "Version %s" % Global.application_version
 
 func _update_buttons():
 	for child in _content_navigation.get_children():
