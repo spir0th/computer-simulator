@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg2if0cylm72m"]
+[gd_scene load_steps=11 format=3 uid="uid://bg2if0cylm72m"]
 
 [ext_resource type="Texture2D" uid="uid://cp472d10a4tql" path="res://world/room.png" id="1_8gjp4"]
 [ext_resource type="PackedScene" uid="uid://dfcu2h2v8twym" path="res://world/lightbulb.tscn" id="4_o4g4h"]
 [ext_resource type="PackedScene" uid="uid://dib4ajcq1epii" path="res://world/monitor.glb" id="4_ot3fq"]
 [ext_resource type="PackedScene" uid="uid://ned6rhahgruc" path="res://world/keyboard.glb" id="5_3cp44"]
+[ext_resource type="PackedScene" uid="uid://c710bulmnbri4" path="res://world/mouse.tscn" id="6_8jwok"]
 [ext_resource type="PackedScene" uid="uid://c0ihyc8rb5tfh" path="res://world/desk.tscn" id="8_crbcj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13u2"]
@@ -61,8 +62,11 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 0.5, -
 [node name="Monitor" parent="Props/Desk" instance=ExtResource("4_ot3fq")]
 transform = Transform3D(1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -0.83, 0.385, 0.5)
 
-[node name="keyboard" parent="Props/Desk" instance=ExtResource("5_3cp44")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.63, 0.385, 0.45)
+[node name="Keyboard" parent="Props/Desk" instance=ExtResource("5_3cp44")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.63, 0.385, 0.5)
+
+[node name="Mouse" parent="Props/Desk" instance=ExtResource("6_8jwok")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.7, 0.39, 0.15)
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 0.5, 0.3, 0.15)

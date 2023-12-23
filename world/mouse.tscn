@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c710bulmnbri4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7s4d"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uv72k"]
+albedo_color = Color(0.364706, 0.47451, 0.47451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_soe3b"]
+lightmap_size_hint = Vector2i(8, 9)
+material = SubResource("StandardMaterial3D_uv72k")
+size = Vector3(0.5, 0.1, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5mfq"]
+albedo_color = Color(0.294118, 0.380392, 0.380392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aw3gc"]
+material = SubResource("StandardMaterial3D_r5mfq")
+size = Vector3(1, 0.01, 1)
+
+[node name="Mouse" type="StaticBody3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_a7s4d")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_soe3b")
+
+[node name="Mousepad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0516856, 0)
+mesh = SubResource("BoxMesh_aw3gc")

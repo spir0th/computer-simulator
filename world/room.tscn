@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dv6ymodk4we22"]
+[gd_scene load_steps=22 format=3 uid="uid://dv6ymodk4we22"]
 
 [ext_resource type="PackedScene" uid="uid://dwfg5m3hs018p" path="res://world/bed.tscn" id="1_0bd1p"]
 [ext_resource type="Texture2D" uid="uid://cp472d10a4tql" path="res://world/room.png" id="1_nqocp"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c6v0ejnxpwqrx" path="res://world/monitor.tscn" id="10_cb8u3"]
 [ext_resource type="PackedScene" uid="uid://cow7bpfn6wvpc" path="res://world/unit.tscn" id="11_ti4ut"]
 [ext_resource type="PackedScene" uid="uid://dlpa0puimmhsp" path="res://world/keyboard.tscn" id="12_vrh2k"]
+[ext_resource type="PackedScene" uid="uid://c710bulmnbri4" path="res://world/mouse.tscn" id="13_tfjrl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13u2"]
 albedo_texture = ExtResource("1_nqocp")
@@ -94,7 +95,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8, 
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, -0.75, 0, 0.1)
 
 [node name="Keyboard" parent="Props/Desk" instance=ExtResource("12_vrh2k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.63, 0.39, 0.45)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.63, 0.39, 0.5)
+
+[node name="Mouse" parent="Props/Desk" instance=ExtResource("13_tfjrl")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.7, 0.39, 0.15)
 
 [node name="Door" parent="Props" instance=ExtResource("7_2ve40")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 3.9, -1.5, 0)
