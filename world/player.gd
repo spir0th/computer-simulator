@@ -58,7 +58,8 @@ func _process(delta):
 	_camera_pitch += camera_pitch
 	
 	_head.rotate_y(deg_to_rad(-camera_yaw))
-	_head.rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-camera_pitch))
+	_camera.rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-camera_pitch))
+	_raycast.rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-camera_pitch))
 
 func _physics_process(delta):
 	if Global.player != self or not _camera.is_current():
