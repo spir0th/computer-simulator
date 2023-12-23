@@ -3,7 +3,7 @@ extends Control
 @onready var player = Global.player
 
 func _ready():
-	assert(player != null)
+	assert(player != null, "No player(s) assigned globally.")
 	hide()
 
 func _input(event):
