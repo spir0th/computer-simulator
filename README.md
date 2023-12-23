@@ -1,8 +1,11 @@
+<img src="https://raw.githubusercontent.com/spir0th/computer-simulator/main/icon.png" align="left" height="130px" width="130px">
+
 # Computer Simulator
 Use the computer like you would do in real life.
 
-Computer Simulator not just simulates a bedroom with a computer on it,
-you can also work with your real files in-game!
+</br>
+
+In Computer Simulator, you can lay down in the bed, switch the lights off/on, and even work with your real files in-game!
 
 ## Screenshots
 ![screenshot_01](https://github.com/spir0th/computer-simulator/assets/66259245/9b03078a-a771-464d-9cb5-e76c62d7824f)
