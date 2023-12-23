@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://csg24vh8e353w"]
+
+[ext_resource type="Texture2D" uid="uid://bb5d6ah32ovfm" path="res://world/skybox.exr" id="1_hd41p"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lhubh"]
+panorama = ExtResource("1_hd41p")
+
+[sub_resource type="Sky" id="Sky_7vej7"]
+sky_material = SubResource("PanoramaSkyMaterial_lhubh")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_7vej7")

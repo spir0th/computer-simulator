@@ -11,7 +11,8 @@ roughness = 0.415087
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4564m"]
 resource_name = "Glass"
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.392157)
 metallic = 0.4
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s4ibv"]
@@ -74,6 +75,5 @@ shape = SubResource("ConvexPolygonShape3D_8wvi6")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
-cast_shadow = 0
 mesh = SubResource("ArrayMesh_o5a6u")
 skeleton = NodePath("")

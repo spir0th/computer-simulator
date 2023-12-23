@@ -135,6 +135,7 @@ common/physics_ticks_per_second=240
 
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_environment="res://world/environment.tres"
 renderer/rendering_method.debug="gl_compatibility"
 renderer/rendering_method.editor="gl_compatibility"
 camera/field_of_view/value=75.0
