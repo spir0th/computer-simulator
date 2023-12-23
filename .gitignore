@@ -5,4 +5,4 @@
 override.cfg
 
 # Exported binaries
-ComputerSimulator*.exe
+export/
