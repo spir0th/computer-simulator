@@ -45,7 +45,6 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
-window/size/mode.release=4
 window/stretch/scale.mobile=2.0
 window/vsync/vsync_mode.editor=0
 
