@@ -93,10 +93,6 @@ func _ready():
 	_retrieve_input_settings()
 	_warning_restart.hide()
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		queue_free()
-
 func _on_window_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("close_requested")
