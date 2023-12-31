@@ -1,0 +1,51 @@
+The game heavily uses assets from third-party developers. Without their work, Computer Simulator would be impossible to make:
+
+[b][u]Bed[/u][/b]
+	(C) 2017 jeremy
+	https://poly.pizza/m/8mkAgVYGbL4
+	Creative Commons BY 3.0 (CC-BY)
+[b][u]Computer[/u][/b]
+	(C) 2022 CreativeTrio
+	https://poly.pizza/m/7KNoiQlSxi
+	Creative Commons Zero 1.0 (CC0)
+[b][u]Furniture Kit[/u][/b]
+	(C) 2022 Kenney
+	https://poly.pizza/bundle/Furniture-Kit-NoG1sEUD1z
+	Creative Commons Zero 1.0 (CC0)
+[b][u]Godot-Action-Icon[/u][/b]
+	Copyright (C) KoBeWi / Tomek
+	https://github.com/KoBeWi/Godot-Action-Icon
+	MIT License
+[b][u]godot-debug-menu[/u][/b]
+	Copyright (C) Calinou and other contributors
+	https://github.com/godot-extended-libraries/godot-debug-menu
+	MIT License
+[b][u]Light Switch[/u][/b]
+	(C) 2017 Jarlan Perez
+	https://poly.pizza/m/drzI0Tg_uKT
+	Creative Commons BY 3.0 (CC-BY)
+[b][u]MarkdownLabel[/u][/b]
+	Copyright (C) Daenvil
+	https://github.com/daenvil/MarkdownLabel
+	MIT License
+[b][u]Roboto / Roboto Mono[/u][/b]
+	Copyright (C) Christian Robertson
+	https://fonts.google.com/specimen/Roboto
+	https://fonts.google.com/specimen/Roboto+Mono
+	Apache License v2.0
+[b][u]Satara Night[/u][/b]
+	(C) 2017 Greg Zaal
+	https://polyhaven.com/a/satara_night
+	Creative Commons Zero 1.0 (CC0)
+[b][u]Wall Paint and Colors[/u][/b]
+	(C) 2019 XCVG
+	https://opengameart.org/content/wall-paint-and-colors
+	Creative Commons Zero 1.0 (CC0)
+[b][u]Window Small[/u][/b]
+	(C) 2021 Quaternius
+	https://poly.pizza/m/n88WAcjzTv
+	Creative Commons Zero 1.0 (CC0)
+[b][u]Wood Texture Tiles[/u][/b]
+	(C) 2014 JCW
+	https://opengameart.org/content/wood-texture-tiles
+	Creative Commons Zero 1.0 (CC0)

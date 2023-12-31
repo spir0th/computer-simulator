@@ -1,0 +1,158 @@
+[gd_scene load_steps=15 format=3 uid="uid://bht0arov04l8j"]
+
+[ext_resource type="Script" path="res://interface/help.gd" id="1_71188"]
+[ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_lo856"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="3_38dap"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="4_iqh3k"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="5_cxaaq"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="6_wy1aa"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="7_80gil"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="8_upnlt"]
+
+[sub_resource type="Resource" id="Resource_p2i6v"]
+resource_local_to_scene = true
+script = ExtResource("3_38dap")
+font_size = 2.285
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[sub_resource type="Resource" id="Resource_7mody"]
+resource_local_to_scene = true
+script = ExtResource("4_iqh3k")
+font_size = 1.714
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[sub_resource type="Resource" id="Resource_us0xn"]
+resource_local_to_scene = true
+script = ExtResource("5_cxaaq")
+font_size = 1.428
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[sub_resource type="Resource" id="Resource_um8lf"]
+resource_local_to_scene = true
+script = ExtResource("6_wy1aa")
+font_size = 1.142
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[sub_resource type="Resource" id="Resource_m21ff"]
+resource_local_to_scene = true
+script = ExtResource("7_80gil")
+font_size = 1.0
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[sub_resource type="Resource" id="Resource_4uy3o"]
+resource_local_to_scene = true
+script = ExtResource("8_upnlt")
+font_size = 0.857
+is_bold = false
+is_italic = false
+is_underlined = false
+
+[node name="Help" type="Window"]
+title = "Help"
+initial_position = 2
+size = Vector2i(768, 512)
+script = ExtResource("1_71188")
+
+[node name="Contents" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_" type="MarginContainer" parent="Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="_" type="VBoxContainer" parent="Contents/_"]
+layout_mode = 2
+
+[node name="Navigation" type="TabBar" parent="Contents/_/_"]
+layout_mode = 2
+tab_count = 4
+tab_alignment = 1
+tab_0/title = "Tutorial"
+tab_1/title = "About"
+tab_2/title = "License"
+tab_3/title = "Third-party"
+
+[node name="Display" type="Panel" parent="Contents/_/_"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Scroller" type="ScrollContainer" parent="Contents/_/_/Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="_" type="MarginContainer" parent="Contents/_/_/Display/Scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Tutorial" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Tutorial goes here"
+fit_content = true
+threaded = true
+
+[node name="About" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "About goes here"
+script = ExtResource("2_lo856")
+markdown_text = "About goes here"
+h1 = SubResource("Resource_p2i6v")
+h2 = SubResource("Resource_7mody")
+h3 = SubResource("Resource_us0xn")
+h4 = SubResource("Resource_um8lf")
+h5 = SubResource("Resource_m21ff")
+h6 = SubResource("Resource_4uy3o")
+
+[node name="License" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+visible = false
+layout_mode = 2
+text = "License goes here"
+fit_content = true
+threaded = true
+
+[node name="Thirdparty" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+visible = false
+layout_mode = 2
+focus_mode = 2
+bbcode_enabled = true
+text = "Third-party licenses go here"
+fit_content = true
+threaded = true
+selection_enabled = true
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="window_input" from="." to="." method="_on_window_input"]
+[connection signal="tab_changed" from="Contents/_/_/Navigation" to="." method="_on_navigation_tab_changed"]

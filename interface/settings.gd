@@ -105,8 +105,8 @@ func _on_close_requested():
 	queue_free()
 
 func _on_navigation_tab_changed(tab):
-	for _c in _scroller.get_children():
-		_c.hide()
+	for child in _scroller.get_children():
+		child.hide()
 	if tab == TAB_INDEX_AUDIO:
 		_option_audio.show()
 	elif tab == TAB_INDEX_DISPLAY:

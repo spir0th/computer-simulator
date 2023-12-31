@@ -11,6 +11,7 @@ enum MenuType {
 @export var type: MenuType = MenuType.MAIN
 
 var _settings = preload("res://interface/settings.tscn")
+var _help = preload("res://interface/help.tscn")
 
 @onready var _background = $Background
 
@@ -70,6 +71,9 @@ func _on_resume_pressed():
 
 func _on_options_pressed():
 	get_parent().add_child(_settings.instantiate())
+
+func _on_help_pressed():
+	get_parent().add_child(_help.instantiate())
 
 func _on_main_menu_pressed():
 	_confirmation_main_menu.show()

@@ -11,10 +11,11 @@ func _input(event):
 		_animator.emit_signal("animation_finished", "branding-start")
 
 func _start():
-	# Temporarily hide mouse cursor, this will be handled by the CopyrightScreen later.
+	# Temporarily hide mouse cursor, it will be brought back later.
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# Play the start animation and await for the animator.
-	# When the animation ends, transition to CopyrightScreen
+	# When the animation ends, bring back the mouse cursor then transition to the main scene.
 	_animator.play("branding-start")
 	await _animator.animation_finished
-	get_tree().change_scene_to_file("res://splash/copyright.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://main.tscn")
