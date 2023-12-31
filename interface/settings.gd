@@ -246,6 +246,8 @@ func _restore_default_input_settings():
 func _retrieve_audio_settings():
 	var output_devices = AudioServer.get_output_device_list()
 	
+	if _audio_output_device.item_count > 0:
+		_audio_output_device.clear()
 	for index in len(output_devices):
 		var device = output_devices[index]
 		_audio_output_device.add_item(device, index)
