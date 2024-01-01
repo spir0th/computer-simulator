@@ -447,16 +447,17 @@ text = "There are modified changes that require a restart to take effect."
 label_settings = SubResource("LabelSettings_vr411")
 vertical_alignment = 1
 
-[node name="RestartSceneConfirmation" type="ConfirmationDialog" parent="."]
+[node name="RestartSceneAlert" type="AcceptDialog" parent="."]
 title = "Notice"
 initial_position = 4
-size = Vector2i(410, 184)
-ok_button_text = "Restart"
-dialog_text = "You have modified changes that requires a QUICK RESTART.
+size = Vector2i(410, 190)
+transient = false
+exclusive = false
+always_on_top = true
+dialog_text = "The game will now perform a quick restart because you have modified changes that requires it.
 
-It is recommended to do it now to avoid unexpected errors, such as rendering issues."
+All unsaved progress will NOT be lost."
 dialog_autowrap = true
-cancel_button_text = "Later"
 
 [node name="DefaultsConfirmation" type="ConfirmationDialog" parent="."]
 title = "Restore default settings"
@@ -486,5 +487,6 @@ cancel_button_text = "No"
 [connection signal="item_selected" from="Contents/_/_/Options/Scroller/_/Display/SSAA/Value" to="." method="_on_display_ssaa_value_item_selected"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Mouse/Sensitivity" to="." method="_on_input_mouse_sensitivity_value_changed"]
 [connection signal="value_changed" from="Contents/_/_/Options/Scroller/_/Input/Camera/Smoothness" to="." method="_on_input_camera_smoothness_value_changed"]
-[connection signal="confirmed" from="RestartSceneConfirmation" to="." method="_on_restart_scene_confirmed"]
+[connection signal="canceled" from="RestartSceneAlert" to="." method="_on_restart_scene_alert_canceled"]
+[connection signal="confirmed" from="RestartSceneAlert" to="." method="_on_restart_scene_alert_confirmed"]
 [connection signal="confirmed" from="DefaultsConfirmation" to="." method="_on_restore_defaults_confirmed"]

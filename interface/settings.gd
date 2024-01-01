@@ -84,7 +84,7 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
 
-@onready var _confirmation_restart_scene = $RestartSceneConfirmation
+@onready var _alert_restart_scene = $RestartSceneAlert
 @onready var _confirmation_defaults = $DefaultsConfirmation
 
 func _ready():
@@ -182,9 +182,9 @@ func _on_display_shadow_value_item_selected(index):
 		ProjectSettings.set_setting("rendering/lights_and_shadows/directional_shadow/size", value)
 		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", value)
 	if value == DISPLAY_SHADOW_VALUES[0]:
-		# When turning off shadows, it is advised for the player to quick restart the scene.
+		# When turning off shadows, the game does a QUICK RESTART to avoid rendering issues.
 		# Note: QUICK RESTART only reloads the current scene, it does not fully restart the entire game.
-		_confirmation_restart_scene.show()
+		_alert_restart_scene.show()
 
 func _on_display_msaa_value_item_selected(index):
 	var value = DISPLAY_MSAA_VALUES[index]
@@ -334,12 +334,15 @@ func _retrieve_input_settings():
 	_input_mouse_sensitivity.value = Global.camera_default_sensitivity
 	_input_camera_smoothness.value = Global.camera_default_smoothness
 
-func _on_restart_scene_confirmed():
+func _on_restart_scene_alert_canceled():
 	get_tree().reload_current_scene()
-	self.show()
+
+func _on_restart_scene_alert_confirmed():
+	_alert_restart_scene.emit_signal("canceled")
 
 func _on_restore_defaults_confirmed():
 	Settings.restore_defaults()
 	_restore_default_audio_settings()
 	_restore_default_display_settings()
 	_restore_default_input_settings()
+
