@@ -84,7 +84,6 @@ var _audio_bus_master = AudioServer.get_bus_index("Master")
 
 @onready var _warning_restart = $Contents/_/_/RestartWarning
 
-@onready var _alert_restart_scene = $RestartSceneAlert
 @onready var _confirmation_defaults = $DefaultsConfirmation
 
 func _ready():
@@ -182,9 +181,8 @@ func _on_display_shadow_value_item_selected(index):
 		ProjectSettings.set_setting("rendering/lights_and_shadows/directional_shadow/size", value)
 		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", value)
 	if value == DISPLAY_SHADOW_VALUES[0]:
-		# When turning off shadows, the game does a QUICK RESTART to avoid rendering issues.
-		# Note: QUICK RESTART only reloads the current scene, it does not fully restart the entire game.
-		_alert_restart_scene.show()
+		# When turning off shadows, reload the current scene to avoid rendering issues.
+		get_tree().reload_current_scene()
 
 func _on_display_msaa_value_item_selected(index):
 	var value = DISPLAY_MSAA_VALUES[index]
@@ -265,7 +263,7 @@ func _retrieve_display_settings():
 	
 	_display_resolution_value.disabled = window_mode > DISPLAY_WINDOW_MODES[0]
 	_display_fov_value.value = Global.camera_default_fov
-	_display_shadow_value.set_item_disabled(0, Global.player != null)
+	_display_shadow_value.disabled = Global.player != null
 	
 	if rendering_method == DISPLAY_RENDERER_METHODS[1] or rendering_method == "mobile":
 		_display_renderer_method.select(1)
@@ -334,15 +332,8 @@ func _retrieve_input_settings():
 	_input_mouse_sensitivity.value = Global.camera_default_sensitivity
 	_input_camera_smoothness.value = Global.camera_default_smoothness
 
-func _on_restart_scene_alert_canceled():
-	get_tree().reload_current_scene()
-
-func _on_restart_scene_alert_confirmed():
-	_alert_restart_scene.emit_signal("canceled")
-
 func _on_restore_defaults_confirmed():
 	Settings.restore_defaults()
 	_restore_default_audio_settings()
 	_restore_default_display_settings()
 	_restore_default_input_settings()
-
