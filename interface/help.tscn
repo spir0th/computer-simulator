@@ -98,31 +98,23 @@ tab_3/title = "Third-party"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Scroller" type="ScrollContainer" parent="Contents/_/_/Display"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="_" type="MarginContainer" parent="Contents/_/_/Display/Scroller"]
+[node name="_" type="MarginContainer" parent="Contents/_/_/Display"]
 layout_mode = 2
+offset_right = 704.0
+offset_bottom = 414.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Tutorial" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+[node name="Tutorial" type="RichTextLabel" parent="Contents/_/_/Display/_"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Tutorial goes here"
-fit_content = true
 threaded = true
 
-[node name="About" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+[node name="About" type="RichTextLabel" parent="Contents/_/_/Display/_"]
 visible = false
 layout_mode = 2
 bbcode_enabled = true
@@ -136,20 +128,18 @@ h4 = SubResource("Resource_um8lf")
 h5 = SubResource("Resource_m21ff")
 h6 = SubResource("Resource_4uy3o")
 
-[node name="License" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+[node name="License" type="RichTextLabel" parent="Contents/_/_/Display/_"]
 visible = false
 layout_mode = 2
 text = "License goes here"
-fit_content = true
 threaded = true
 
-[node name="Thirdparty" type="RichTextLabel" parent="Contents/_/_/Display/Scroller/_"]
+[node name="Thirdparty" type="RichTextLabel" parent="Contents/_/_/Display/_"]
 visible = false
 layout_mode = 2
 focus_mode = 2
 bbcode_enabled = true
 text = "Third-party licenses go here"
-fit_content = true
 threaded = true
 selection_enabled = true
 

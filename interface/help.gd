@@ -6,13 +6,12 @@ const TAB_INDEX_LICENSE = 2
 const TAB_INDEX_THIRDPARTY = 3
 
 @onready var _contents_navigation = $Contents/_/_/Navigation
+@onready var _contents_display = $Contents/_/_/Display/_
 
-@onready var _scroller = $Contents/_/_/Display/Scroller/_
-
-@onready var _display_tutorial = $Contents/_/_/Display/Scroller/_/Tutorial
-@onready var _display_about = $Contents/_/_/Display/Scroller/_/About
-@onready var _display_license = $Contents/_/_/Display/Scroller/_/License
-@onready var _display_thirdparty = $Contents/_/_/Display/Scroller/_/Thirdparty
+@onready var _display_tutorial = $Contents/_/_/Display/_/Tutorial
+@onready var _display_about = $Contents/_/_/Display/_/About
+@onready var _display_license = $Contents/_/_/Display/_/License
+@onready var _display_thirdparty = $Contents/_/_/Display/_/Thirdparty
 
 func _ready():
 	_read_from_files()
@@ -25,7 +24,7 @@ func _on_close_requested():
 	queue_free()
 
 func _on_navigation_tab_changed(tab):
-	for child in _scroller.get_children():
+	for child in _contents_display.get_children():
 		child.hide()
 	if tab == TAB_INDEX_TUTORIAL:
 		_display_tutorial.show()
