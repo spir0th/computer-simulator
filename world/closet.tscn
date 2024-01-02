@@ -7,6 +7,7 @@ points = PackedVector3Array(-0.00882861, 0.814845, 0.25, -0.396291, 0.0149237, 2
 resource_name = "wood"
 albedo_color = Color(0.901306, 0.609712, 0.395881, 1)
 emission_enabled = true
+disable_receive_shadows = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_76opn"]
 _surfaces = [{

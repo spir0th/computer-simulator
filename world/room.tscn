@@ -93,7 +93,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.7, 0.39, 0.15)
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 3.9, -1.5, 0)
 
 [node name="Closet" parent="Props" instance=ExtResource("7_gb6ie")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3, -1.5, 3.1)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3, -1.5, 3.23)
 
 [node name="Switch" parent="Props" node_paths=PackedStringArray("_sun", "_light") instance=ExtResource("8_tqs5j")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 4, 0.5, -0.5)

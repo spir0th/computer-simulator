@@ -12,12 +12,14 @@ emission_enabled = true
 resource_name = "FFFFFF"
 roughness = 0.903922
 emission_enabled = true
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lle8"]
 resource_name = "795548"
 albedo_color = Color(0.473121, 0.33183, 0.2717, 1)
 roughness = 0.903922
 emission_enabled = true
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ettgf"]
 resource_name = "009688"

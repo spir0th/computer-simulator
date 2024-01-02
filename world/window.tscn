@@ -8,12 +8,14 @@ resource_name = "White"
 albedo_color = Color(0.632959, 0.629952, 0.620932, 1)
 metallic = 0.4
 roughness = 0.415087
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4564m"]
 resource_name = "Glass"
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.392157)
 metallic = 0.4
+disable_receive_shadows = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s4ibv"]
 _surfaces = [{
