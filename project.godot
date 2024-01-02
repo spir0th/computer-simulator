@@ -136,3 +136,4 @@ textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 environment/defaults/default_environment="res://world/environment.tres"
 camera/field_of_view/value=75.0
+renderer/rendering_method.editor="gl_compatibility"

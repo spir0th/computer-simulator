@@ -10,6 +10,7 @@ func _notification(what):
 			OS.crash("Failed to save persistent settings, make sure file permissions are set correctly and is writable.")
 
 func save() -> Error:
+	print("Renderer saved: %s" % ProjectSettings.get_setting("rendering/renderer/rendering_method"))
 	return ProjectSettings.save_custom("override.cfg")
 
 func restore_defaults():
