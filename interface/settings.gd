@@ -125,7 +125,6 @@ func _on_audio_master_volume_value_changed(value):
 
 func _on_display_renderer_method_item_selected(index):
 	var method = DISPLAY_RENDERER_METHODS[index]
-	var last_method = ProjectSettings.get_setting("rendering/renderer/rendering_method", "forward_plus")
 	ProjectSettings.set_setting("rendering/renderer/rendering_method", method)
 	_warning_restart.show()
 
