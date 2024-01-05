@@ -32,7 +32,8 @@ devices/output_device="default"
 
 [autoload]
 
-WindowportResizer="*res://addons/windowport_resizer/resizer.gd"
+FreeMyHomies="*res://addons/fmh_internal/fmh.gd"
+WindowportResizer="*res://addons/wp_resizer/resizer.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Global="*res://global.gd"
 Settings="*res://settings.gd"
@@ -50,7 +51,7 @@ window/vsync/vsync_mode.editor=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ActionIcon/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/markdownlabel/plugin.cfg", "res://addons/windowport_resizer/plugin.cfg")
+enabled=PackedStringArray("res://addons/ActionIcon/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/fmh_internal/plugin.cfg", "res://addons/markdownlabel/plugin.cfg", "res://addons/wp_resizer/plugin.cfg")
 
 [gui]
 
@@ -121,10 +122,6 @@ player_interact={
 
 pointing/android/enable_pan_and_scale_gestures=true
 pointing/camera/sensitivity=0.25
-
-[internationalization]
-
-locale/translations_pot_files=PackedStringArray("res://interface/menu.tscn", "res://interface/menu.gd")
 
 [physics]
 
